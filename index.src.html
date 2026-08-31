@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RuledByPaper — Minimalist Printable Calendars &amp; Planners</title>
+<meta name="description" content="Black and white printable calendars and planners. Nothing on the page competes with your handwriting. A4 and US Letter, print at home or use in GoodNotes.">
+<meta property="og:title" content="RuledByPaper">
+<meta property="og:description" content="Minimalist printable calendars and planners. Black and white, A4 and US Letter.">
+<meta property="og:type" content="website">
+<style>
+@font-face{font-family:"PlayfairR";src:url(data:font/woff2;base64,__PF700__) format("woff2");
+           font-weight:700;font-style:normal;font-display:swap}
+:root{
+  --paper:#FFFFFF; --ink:#1A1A1A; --soft:#5F5A57; --faint:#8B8480;
+  --rule:#CFCFCF; --band:#F6F4F3;
+  --display:"PlayfairR",Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+         "Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#141312; --ink:#ECE7E4; --soft:#A79D99; --faint:#7A716D;
+  --rule:#332E2C; --band:#1C1918;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+     font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem}
+
+/* ── 머리 ── */
+header{padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,6vw,4rem);text-align:center}
+.mark{font-family:var(--display);font-weight:700;
+      font-size:clamp(2.6rem,9vw,4.4rem);line-height:1;letter-spacing:-.01em;margin:0}
+.tag{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
+     color:var(--soft);margin:1.1rem 0 0}
+.pitch{font-size:1.15rem;line-height:1.7;color:var(--soft);
+       max-width:28rem;margin:2.2rem auto 0}
+.pitch b{color:var(--ink);font-weight:600}
+
+/* ── 상품 ── */
+h2{font-family:var(--display);font-weight:700;font-size:1.6rem;
+   margin:0 0 .4rem;letter-spacing:-.01em}
+.sec{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--rule)}
+.sec-lead{color:var(--soft);margin:0 0 2rem;font-size:.98rem}
+.items{display:grid;gap:1rem}
+.item{display:block;border:1px solid var(--rule);padding:1.3rem 1.4rem;
+      text-decoration:none;color:inherit;transition:border-color .15s}
+.item:hover,.item:focus-visible{border-color:var(--ink)}
+.item:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.item-top{display:flex;flex-wrap:wrap;align-items:baseline;
+          justify-content:space-between;gap:.3rem 1rem}
+.item h3{font-size:1.06rem;margin:0;letter-spacing:-.01em}
+.price{font-family:var(--display);font-weight:700;font-size:1.15rem;white-space:nowrap}
+.free{color:#3F7A52}
+@media (prefers-color-scheme:dark){.free{color:#7BB78E}}
+.item p{font-size:.93rem;color:var(--soft);margin:.5rem 0 0}
+.item .files{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+             color:var(--faint);margin-top:.7rem}
+
+/* ── 이야기 ── */
+.why{background:var(--band);padding:clamp(2.2rem,6vw,3.4rem) 0;border-top:1px solid var(--rule)}
+.why p{max-width:32rem;margin:0 auto 1rem}
+.why p:last-child{margin-bottom:0}
+.why .lead{font-family:var(--display);font-weight:700;font-size:1.35rem;
+           line-height:1.45;text-align:center;margin-bottom:1.6rem}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
+       gap:1.2rem;margin-top:2rem}
+.fact{border-top:1px solid var(--rule);padding-top:.9rem}
+.fact b{display:block;font-family:var(--display);font-size:1.5rem;line-height:1}
+.fact span{display:block;font-size:.82rem;color:var(--soft);margin-top:.35rem}
+
+footer{border-top:1px solid var(--rule);padding:2.5rem 0 4rem;
+       font-size:.85rem;color:var(--faint);text-align:center}
+footer a{color:var(--soft)}
+footer .links{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;justify-content:center;margin-bottom:1.2rem}
+a{color:inherit;text-underline-offset:.2em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1 class="mark">RuledByPaper</h1>
+    <p class="tag">Printable Calendars &amp; Planners</p>
+    <p class="pitch">Black and white on purpose. <b>Nothing on the page competes
+      with your handwriting</b> — and it prints the same on a cheap inkjet as on
+      a laser printer.</p>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>What we make</h2>
+    <p class="sec-lead">Instant download. Print at home, or drop the files into
+      GoodNotes on an iPad.</p>
+    <div class="items">
+
+      <a class="item" href="https://ruledbypaper.gumroad.com/l/olaqm">
+        <div class="item-top">
+          <h3>2027 Year at a Glance</h3>
+          <span class="price free">Free</span>
+        </div>
+        <p>The whole year on one page. Print it for the wall or the inside of a
+          cupboard door and see all twelve months at once.</p>
+        <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
+      </a>
+
+      <a class="item" href="https://ruledbypaper.gumroad.com/l/tzhsao">
+        <div class="item-top">
+          <h3>2027 Monthly Calendar</h3>
+          <span class="price">$3.99</span>
+        </div>
+        <p>A full page for every month. The iPad version has month tabs at the
+          top — touch one and you land on that month.</p>
+        <p class="files">6 PDF files · A4 + US Letter · Printable + GoodNotes</p>
+      </a>
+
+      <a class="item" href="https://ruledbypaper.gumroad.com/l/ibzjm">
+        <div class="item-top">
+          <h3>2027 Calendar + Undated Planner Bundle</h3>
+          <span class="price">$12.99</span>
+        </div>
+        <p>Everything in one download. The planner pages have no dates, so they
+          never go out of date.</p>
+        <p class="files">24 PDF files · Calendar · Weekly · Habits · To-do · Notes</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <p class="lead">Most planners are decorated. Ours are not.</p>
+    <p>A page you write on every day should get out of the way. So there is no
+      colour, no pattern, and no clip art — only the lines you actually need,
+      set in type that stays quiet.</p>
+    <p>Every file is built to print properly: real margins, embedded fonts, and
+      both A4 and US Letter in the same download, so the page you get is the
+      page you designed for.</p>
+    <div class="facts">
+      <div class="fact"><b>A4 + Letter</b><span>Both sizes, every product</span></div>
+      <div class="fact"><b>Mon or Sun</b><span>The grid actually shifts</span></div>
+      <div class="fact"><b>Tap to jump</b><span>Month tabs for GoodNotes</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>Where to find us</h2>
+    <p class="sec-lead">The shop is on Gumroad. New pages and previews go up on
+      Pinterest.</p>
+    <div class="items">
+      <a class="item" href="https://ruledbypaper.gumroad.com">
+        <div class="item-top"><h3>Shop on Gumroad</h3><span class="price">→</span></div>
+        <p>All products, instant download.</p>
+      </a>
+      <a class="item" href="https://kr.pinterest.com/RuledByPaper/">
+        <div class="item-top"><h3>Pinterest</h3><span class="price">→</span></div>
+        <p>Previews and printing ideas.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://ruledbypaper.gumroad.com">Shop</a>
+      <a href="https://kr.pinterest.com/RuledByPaper/">Pinterest</a>
+      <a href="./privacy/">Privacy</a>
+    </div>
+    <p>© 2026 RuledByPaper · For personal use only</p>
+  </div>
+</footer>
+
+</body>
+</html>
