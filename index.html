@@ -13,20 +13,18 @@
            font-weight:700;font-style:normal;font-display:swap}
 :root{
   --paper:#FFFFFF; --ink:#1A1A1A; --soft:#5F5A57; --faint:#8B8480;
-  --rule:#CFCFCF; --band:#F6F4F3;
+  --rule:#CFCFCF; --band:#F6F4F3; --go:#3F7A52;
   --display:"PlayfairR",Georgia,'Times New Roman',serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
          "Malgun Gothic","Apple SD Gothic Neo",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
   --paper:#141312; --ink:#ECE7E4; --soft:#A79D99; --faint:#7A716D;
-  --rule:#332E2C; --band:#1C1918;}}
+  --rule:#332E2C; --band:#1C1918; --go:#7BB78E;}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
      font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
 .wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem}
-
-/* ── 머리 ── */
 header{padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,6vw,4rem);text-align:center}
 .mark{font-family:var(--display);font-weight:700;
       font-size:clamp(2.6rem,9vw,4.4rem);line-height:1;letter-spacing:-.01em;margin:0}
@@ -35,8 +33,6 @@ header{padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,6vw,4rem);text-align:cente
 .pitch{font-size:1.15rem;line-height:1.7;color:var(--soft);
        max-width:28rem;margin:2.2rem auto 0}
 .pitch b{color:var(--ink);font-weight:600}
-
-/* ── 상품 ── */
 h2{font-family:var(--display);font-weight:700;font-size:1.6rem;
    margin:0 0 .4rem;letter-spacing:-.01em}
 .sec{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--rule)}
@@ -50,25 +46,20 @@ h2{font-family:var(--display);font-weight:700;font-size:1.6rem;
           justify-content:space-between;gap:.3rem 1rem}
 .item h3{font-size:1.06rem;margin:0;letter-spacing:-.01em}
 .price{font-family:var(--display);font-weight:700;font-size:1.15rem;white-space:nowrap}
-.free{color:#3F7A52}
-@media (prefers-color-scheme:dark){.free{color:#7BB78E}}
+.free{color:var(--go)}
 .item p{font-size:.93rem;color:var(--soft);margin:.5rem 0 0}
 .item .files{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
              color:var(--faint);margin-top:.7rem}
-
-/* ── 이야기 ── */
 .why{background:var(--band);padding:clamp(2.2rem,6vw,3.4rem) 0;border-top:1px solid var(--rule)}
 .why p{max-width:32rem;margin:0 auto 1rem}
 .why p:last-child{margin-bottom:0}
 .why .lead{font-family:var(--display);font-weight:700;font-size:1.35rem;
            line-height:1.45;text-align:center;margin-bottom:1.6rem}
-
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
        gap:1.2rem;margin-top:2rem}
 .fact{border-top:1px solid var(--rule);padding-top:.9rem}
 .fact b{display:block;font-family:var(--display);font-size:1.5rem;line-height:1}
 .fact span{display:block;font-size:.82rem;color:var(--soft);margin-top:.35rem}
-
 footer{border-top:1px solid var(--rule);padding:2.5rem 0 4rem;
        font-size:.85rem;color:var(--faint);text-align:center}
 footer a{color:var(--soft)}
@@ -94,37 +85,30 @@ a{color:inherit;text-underline-offset:.2em}
     <p class="sec-lead">Instant download. Print at home, or drop the files into
       GoodNotes on an iPad.</p>
     <div class="items">
-
       <a class="item" href="https://ruledbypaper.gumroad.com/l/olaqm">
         <div class="item-top">
           <h3>2027 Year at a Glance</h3>
           <span class="price free">Free</span>
         </div>
-        <p>The whole year on one page. Print it for the wall or the inside of a
-          cupboard door and see all twelve months at once.</p>
+        <p>The whole year on one page. Print it for the wall or the inside of a cupboard door and see all twelve months at once.</p>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-
       <a class="item" href="https://ruledbypaper.gumroad.com/l/tzhsao">
         <div class="item-top">
           <h3>2027 Monthly Calendar</h3>
           <span class="price">$3.99</span>
         </div>
-        <p>A full page for every month. The iPad version has month tabs at the
-          top — touch one and you land on that month.</p>
+        <p>A full page for every month. The iPad version has month tabs at the top — touch one and you land on that month.</p>
         <p class="files">6 PDF files · A4 + US Letter · Printable + GoodNotes</p>
       </a>
-
       <a class="item" href="https://ruledbypaper.gumroad.com/l/ibzjm">
         <div class="item-top">
           <h3>2027 Calendar + Undated Planner Bundle</h3>
           <span class="price">$12.99</span>
         </div>
-        <p>Everything in one download. The planner pages have no dates, so they
-          never go out of date.</p>
+        <p>Everything in one download. The planner pages have no dates, so they never go out of date.</p>
         <p class="files">24 PDF files · Calendar · Weekly · Habits · To-do · Notes</p>
       </a>
-
     </div>
   </div>
 </section>
