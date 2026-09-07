@@ -39,8 +39,21 @@ h2{font-family:var(--display);font-weight:700;font-size:1.6rem;
 .sec{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--rule)}
 .sec-lead{color:var(--soft);margin:0 0 2rem;font-size:.98rem}
 .items{display:grid;gap:1rem}
+/* 상품 카드는 격자로 깐다. 넓으면 세 칸, 태블릿 두 칸, 폰 한 칸으로
+   접힌다 - 칸 수를 화면 크기마다 세지 않고 최소 폭만 정해 맡긴다. */
+.cards{display:grid;gap:1.4rem;
+       grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
+/* 상품 칸은 글 칸보다 넓다. 46rem 안에서는 카드가 두 줄밖에 안 서서
+   상점처럼 안 보인다. 글은 그대로 읽기 좋은 폭으로 묶어 둔다. */
+.wrap.shelf{max-width:64rem}
+.shelf h2,.shelf .sec-lead{max-width:44rem}
 .item{display:block;border:1px solid var(--rule);padding:1.3rem 1.4rem;
       text-decoration:none;color:inherit;transition:border-color .15s}
+/* 카드 안의 그림은 칸 너비를 꽉 채운다. 위아래 여백은 카드 padding 이
+   맡으므로 그림에는 아래쪽만 준다. */
+.cards .item{padding:0 0 1.2rem}
+.cards .shot{display:block;width:100%;height:auto;margin-bottom:1.1rem}
+.cards .item-top,.cards .item .files{padding:0 1.2rem}
 .item:hover,.item:focus-visible{border-color:var(--ink)}
 .item:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .item-top{display:flex;flex-wrap:wrap;align-items:baseline;
@@ -77,6 +90,14 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .buy{display:inline-block;border:1px solid var(--ink);padding:.85rem 2rem;
      text-decoration:none;font-size:.95rem;letter-spacing:.02em;margin-top:.4rem}
 .buy:hover,.buy:focus-visible{background:var(--ink);color:var(--paper)}
+/* 어디로 가는지 작게 남긴다. 단추가 "Buy now" 라고만 하면 누르기 전에
+   어느 가게로 가는지 알 수 없다. */
+.buy .where{display:block;font-size:.72rem;letter-spacing:.16em;
+            text-transform:uppercase;color:var(--faint);margin-top:.25rem}
+.buy:hover .where,.buy:focus-visible .where{color:inherit}
+/* 상세 쪽 커버. 세로로 쌓아 손가락으로 내리면서 보게 둔다. */
+.sec>.wrap>.shot{display:block;width:100%;height:auto;margin:0 0 1.2rem;
+                 border:1px solid var(--rule)}
 .prose{max-width:34rem}
 .prose h3{font-family:var(--display);font-size:1.15rem;margin:2rem 0 .3rem}
 .prose ol,.prose ul{padding-left:1.2rem;color:var(--soft)}
@@ -96,12 +117,17 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 
 <section class="sec">
   <div class="wrap">
+    <img class="shot" src="../../images/2027-classic/bundle/cover-1.png"
+         alt="2027 Calendar + Undated Planner + Budget Bundle">
+    <img class="shot" src="../../images/2027-classic/bundle/cover-2.png"
+         alt="2027 Calendar + Undated Planner + Budget Bundle" loading="lazy">
     <div class="item-top">
       <h2>What you get</h2>
       <span class="price">$12.99</span>
     </div>
     <p class="files">34 PDF files · Calendar · Planner · Budget</p>
-    <p><a class="buy" href="https://ruledbypaper.gumroad.com/l/ibzjm">Get it on Gumroad</a></p>
+    <p><a class="buy" href="https://ruledbypaper.gumroad.com/l/ibzjm">Buy now — $12.99
+      <span class="where">on Gumroad</span></a></p>
   </div>
 </section>
 
