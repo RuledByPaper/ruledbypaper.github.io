@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ruledbypaper.github.io/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/free-glance/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/monthly-calendar/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/landscape-calendar/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/budget-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/planner-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/chore-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/clean-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/reading-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/meal-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/xmas-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/year-in-pixels-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/bundle/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/bakery-desk-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/black-red-free-glance/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/black-red-monthly-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/black-red-landscape-calendar/</loc></url>
@@ -25,15 +14,26 @@
   <url><loc>https://ruledbypaper.github.io/p/black-red-xmas-set/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/black-red-year-in-pixels-set/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/black-red-bundle/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/weekend-colour-free-glance/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/weekend-colour-monthly-calendar/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/weekend-colour-landscape-calendar/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/cozy-christmas-xmas-set/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/engraving-monthly-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/bloom-glass-desk-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/bloom-pot-desk-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/cafe-desk-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/p/cats-desk-calendar/</loc></url>
-  <url><loc>https://ruledbypaper.github.io/p/bakery-desk-calendar/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/free-glance/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/monthly-calendar/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/landscape-calendar/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/budget-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/planner-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/chore-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/clean-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/reading-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/meal-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/xmas-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/year-in-pixels-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/bundle/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/cozy-christmas-xmas-set/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/engraving-monthly-calendar/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/weekend-colour-free-glance/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/weekend-colour-monthly-calendar/</loc></url>
+  <url><loc>https://ruledbypaper.github.io/p/weekend-colour-landscape-calendar/</loc></url>
   <url><loc>https://ruledbypaper.github.io/printing/</loc></url>
 </urlset>
