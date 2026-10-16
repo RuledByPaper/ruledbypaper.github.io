@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ruledbypaper.github.io/sitemap.xml
+Sitemap: https://ruledbypaper.com/sitemap.xml
