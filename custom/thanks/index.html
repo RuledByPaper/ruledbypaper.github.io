@@ -162,8 +162,9 @@ body.home{background-color:var(--paper);
            box-shadow:0 0 0 1px var(--rule)}
 .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
         color:var(--red);margin:0 0 1rem}
-.hero .mark{font-size:clamp(2rem,6vw,3.6rem);line-height:1.08}
-/* "Paper that leaves / room for you" 두 덩이로만 끊는다. */
+/* "Paper that leaves / room for you" 두 덩이로만 끊는다. 글자를 칸보다 넉넉히
+   작게 두어, 글꼴이 조금 넓게 그려지는 컴퓨터에서도 덩이 안에서 다시 끊기지 않게. */
+.hero .mark{font-size:clamp(1.8rem,8.4vw,3.3rem);line-height:1.08}
 .hero .mark span{display:inline-block}
 .hero .pitch{margin:1.2rem auto 0;font-size:1.05rem}
 .ctas{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
@@ -233,13 +234,16 @@ body.home{background-color:var(--paper);
 .home .why{background:var(--band)}
 .home footer{background:var(--paper)}
 .home .wrap.shelf{max-width:72rem}
-/* 첫 화면: 전체 상품 한 줄. View all(#all)·카테고리 단추면 칸별 격자로 다 편다. */
-.shelf.rails .kind{display:none}
-.shelf:not(.rails) .whole{display:none}
+/* 첫 화면: 칸마다 옆으로 넘기는 줄. View all(#칸) 이나 #all 이면 격자로 다 편다. */
+.shelf.rails .cards{grid-template-columns:none;grid-auto-flow:column;
+  grid-auto-columns:13.5rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:.8rem;scrollbar-width:thin}
+.shelf.rails .cards .item{scroll-snap-align:start}
 .shelf:not(.rails) .view-all{display:none}
 .kind-head{margin-bottom:1rem}.kind-head .kind-name{margin:0}
 .view-all{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);
           text-decoration:none;white-space:nowrap}
+@media (max-width:60rem){.shelf.rails .cards{grid-auto-columns:62%}}
 @media (max-width:40rem){
   /* 휴대폰: 메뉴 다섯 칸을 한 줄로 두고 옆으로 민다. */
   .top-links{gap:.5rem;flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:.2rem;scrollbar-width:none;

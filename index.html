@@ -167,8 +167,9 @@ body.home{background-color:var(--paper);
            box-shadow:0 0 0 1px var(--rule)}
 .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
         color:var(--red);margin:0 0 1rem}
-.hero .mark{font-size:clamp(2rem,6vw,3.6rem);line-height:1.08}
-/* "Paper that leaves / room for you" 두 덩이로만 끊는다. */
+/* "Paper that leaves / room for you" 두 덩이로만 끊는다. 글자를 칸보다 넉넉히
+   작게 두어, 글꼴이 조금 넓게 그려지는 컴퓨터에서도 덩이 안에서 다시 끊기지 않게. */
+.hero .mark{font-size:clamp(1.8rem,8.4vw,3.3rem);line-height:1.08}
 .hero .mark span{display:inline-block}
 .hero .pitch{margin:1.2rem auto 0;font-size:1.05rem}
 .ctas{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
@@ -238,13 +239,16 @@ body.home{background-color:var(--paper);
 .home .why{background:var(--band)}
 .home footer{background:var(--paper)}
 .home .wrap.shelf{max-width:72rem}
-/* 첫 화면: 전체 상품 한 줄. View all(#all)·카테고리 단추면 칸별 격자로 다 편다. */
-.shelf.rails .kind{display:none}
-.shelf:not(.rails) .whole{display:none}
+/* 첫 화면: 칸마다 옆으로 넘기는 줄. View all(#칸) 이나 #all 이면 격자로 다 편다. */
+.shelf.rails .cards{grid-template-columns:none;grid-auto-flow:column;
+  grid-auto-columns:13.5rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:.8rem;scrollbar-width:thin}
+.shelf.rails .cards .item{scroll-snap-align:start}
 .shelf:not(.rails) .view-all{display:none}
 .kind-head{margin-bottom:1rem}.kind-head .kind-name{margin:0}
 .view-all{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);
           text-decoration:none;white-space:nowrap}
+@media (max-width:60rem){.shelf.rails .cards{grid-auto-columns:62%}}
 @media (max-width:40rem){
   /* 휴대폰: 메뉴 다섯 칸을 한 줄로 두고 옆으로 민다. */
   .top-links{gap:.5rem;flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:.2rem;scrollbar-width:none;
@@ -431,7 +435,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
 
 <section class="sec">
   <div class="wrap shelf rails" id="shop">
-    <div class="row-head"><h2>The whole shop</h2><span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#all">View all →</a></span></div>
+    <h2>The whole shop</h2>
     <p class="sec-lead">Instant download. Print at home, or drop the files into
       GoodNotes on an iPad.</p>
     <nav class="kinds" aria-label="Product types">
@@ -441,215 +445,10 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
       <a href="#seasonal">Seasonal</a>
       <a href="#bundles">Bundles</a>
     </nav>
-    <div class="rail whole">
-      <a class="tile" href="./p/black-red-free-glance/">
-        <img src="./images/2027-black-red/free-glance/card.png" alt="2027 Year at a Glance — Free Printable Calendar, Red Accent"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Year at a Glance — Free Printable Calendar, Red Accent</h3>
-        <span class="price free">Free</span>
-      </a>
-      <a class="tile" href="./p/free-glance/">
-        <img src="./images/2027-classic/free-glance/card.png" alt="2027 Year at a Glance — Free Printable One Page Calendar"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Year at a Glance — Free Printable One Page Calendar</h3>
-        <span class="price free">Free</span>
-      </a>
-      <a class="tile" href="./p/weekend-colour-free-glance/">
-        <img src="./images/2027-weekend-colour/free-glance/card.png" alt="2027 Year at a Glance — Free Printable Calendar, Blue & Red Weekends"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Year at a Glance — Free Printable Calendar, Blue & Red Weekends</h3>
-        <span class="price free">Free</span>
-      </a>
-      <a class="tile" href="./p/black-red-monthly-calendar/">
-        <img src="./images/2027-black-red/monthly-calendar/card.png" alt="2027 Monthly Calendar — Red Accent | Printable + GoodNotes | A4 & US Letter"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Monthly Calendar — Red Accent | Printable + GoodNotes | A4 & US Letter</h3>
-        <span class="price">$2.99</span>
-      </a>
-      <a class="tile" href="./p/monthly-calendar/">
-        <img src="./images/2027-classic/monthly-calendar/card.png" alt="2027 Monthly Calendar — Black & White | Printable + GoodNotes | A4 & US Letter"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Monthly Calendar — Black & White | Printable + GoodNotes | A4 & US Letter</h3>
-        <span class="price">$2.99</span>
-      </a>
-      <a class="tile" href="./p/engraving-monthly-calendar/">
-        <img src="./images/2027-engraving/monthly-calendar/card.png" alt="2027 Monthly Calendar — Vintage Botanical | Printable + GoodNotes | A4 & US Letter"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Monthly Calendar — Vintage Botanical | Printable + GoodNotes | A4 & US Letter</h3>
-        <span class="price">$2.99</span>
-      </a>
-      <a class="tile" href="./p/weekend-colour-monthly-calendar/">
-        <img src="./images/2027-weekend-colour/monthly-calendar/card.png" alt="2027 Monthly Calendar — Blue & Red Weekends | Printable + GoodNotes | A4 & US Letter"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Monthly Calendar — Blue & Red Weekends | Printable + GoodNotes | A4 & US Letter</h3>
-        <span class="price">$2.99</span>
-      </a>
-      <a class="tile" href="./p/black-red-landscape-calendar/">
-        <img src="./images/2027-black-red/landscape-calendar/card.png" alt="2027 Landscape Wall Calendar — Red Accent | Printable | A4 & US Letter Landscape"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Landscape Wall Calendar — Red Accent | Printable | A4 & US Letter Landscape</h3>
-        <span class="price">$1.99</span>
-      </a>
-      <a class="tile" href="./p/landscape-calendar/">
-        <img src="./images/2027-classic/landscape-calendar/card.png" alt="2027 Landscape Wall Calendar — Printable | A4 & US Letter Landscape"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Landscape Wall Calendar — Printable | A4 & US Letter Landscape</h3>
-        <span class="price">$1.99</span>
-      </a>
-      <a class="tile" href="./p/weekend-colour-landscape-calendar/">
-        <img src="./images/2027-weekend-colour/landscape-calendar/card.png" alt="2027 Landscape Wall Calendar — Blue & Red Weekends | Printable | A4 & US Letter Landscape"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Landscape Wall Calendar — Blue & Red Weekends | Printable | A4 & US Letter Landscape</h3>
-        <span class="price">$1.99</span>
-      </a>
-      <a class="tile" href="./p/bakery-desk-calendar/">
-        <img src="./images/2027-bakery/desk-calendar/card.png" alt="2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards</h3>
-        <span class="price">$3.49</span>
-      </a>
-      <a class="tile" href="./p/bloom-glass-desk-calendar/">
-        <img src="./images/2027-bloom-glass/desk-calendar/card.png" alt="2027 Birth Flower Desk Calendar — Watercolor | Printable Cut-Out Cards"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Birth Flower Desk Calendar — Watercolor | Printable Cut-Out Cards</h3>
-        <span class="price">$3.49</span>
-      </a>
-      <a class="tile" href="./p/bloom-pot-desk-calendar/">
-        <img src="./images/2027-bloom-pot/desk-calendar/card.png" alt="2027 Birth Flower Desk Calendar — Vintage Botanical | Printable Cut-Out Cards"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Birth Flower Desk Calendar — Vintage Botanical | Printable Cut-Out Cards</h3>
-        <span class="price">$3.49</span>
-      </a>
-      <a class="tile" href="./p/cafe-desk-calendar/">
-        <img src="./images/2027-cafe/desk-calendar/card.png" alt="2027 Coffee Desk Calendar — Seasonal Drinks | Printable Cut-Out Cards"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Coffee Desk Calendar — Seasonal Drinks | Printable Cut-Out Cards</h3>
-        <span class="price">$3.49</span>
-      </a>
-      <a class="tile" href="./p/cats-desk-calendar/">
-        <img src="./images/2027-cats/desk-calendar/card.png" alt="2027 Cat Desk Calendar — Cozy Watercolor Cats | Printable Cut-Out Cards"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Cat Desk Calendar — Cozy Watercolor Cats | Printable Cut-Out Cards</h3>
-        <span class="price">$3.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-planner-set/">
-        <img src="./images/2027-black-red/planner-set/card.png" alt="Undated Weekly Planner Set — Red Accent · Habit Tracker, To-Do, Notes"
-             width="600" height="600" loading="lazy">
-        <h3>Undated Weekly Planner Set — Red Accent · Habit Tracker, To-Do, Notes</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/planner-set/">
-        <img src="./images/2027-classic/planner-set/card.png" alt="Undated Weekly Planner Set · Habit Tracker, To-Do, Notes"
-             width="600" height="600" loading="lazy">
-        <h3>Undated Weekly Planner Set · Habit Tracker, To-Do, Notes</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-budget-set/">
-        <img src="./images/2027-black-red/budget-set/card.png" alt="Printable Budget Set — Red Accent · Cash Envelope Inserts"
-             width="600" height="600" loading="lazy">
-        <h3>Printable Budget Set — Red Accent · Cash Envelope Inserts</h3>
-        <span class="price">$1.99</span>
-      </a>
-      <a class="tile" href="./p/budget-set/">
-        <img src="./images/2027-classic/budget-set/card.png" alt="Printable Budget Set · Cash Envelope Inserts"
-             width="600" height="600" loading="lazy">
-        <h3>Printable Budget Set · Cash Envelope Inserts</h3>
-        <span class="price">$1.99</span>
-      </a>
-      <a class="tile" href="./p/black-red-meal-set/">
-        <img src="./images/2027-black-red/meal-set/card.png" alt="Meal Planner Set — Red Accent · Weekly Menu + Grocery List"
-             width="600" height="600" loading="lazy">
-        <h3>Meal Planner Set — Red Accent · Weekly Menu + Grocery List</h3>
-        <span class="price">$1.49</span>
-      </a>
-      <a class="tile" href="./p/meal-set/">
-        <img src="./images/2027-classic/meal-set/card.png" alt="Meal Planner Set · Weekly Menu + Grocery List"
-             width="600" height="600" loading="lazy">
-        <h3>Meal Planner Set · Weekly Menu + Grocery List</h3>
-        <span class="price">$1.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-clean-set/">
-        <img src="./images/2027-black-red/clean-set/card.png" alt="Cleaning Checklist Set — Red Accent · Room by Room + Deep Clean"
-             width="600" height="600" loading="lazy">
-        <h3>Cleaning Checklist Set — Red Accent · Room by Room + Deep Clean</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/clean-set/">
-        <img src="./images/2027-classic/clean-set/card.png" alt="Cleaning Checklist Set · Room by Room + Deep Clean"
-             width="600" height="600" loading="lazy">
-        <h3>Cleaning Checklist Set · Room by Room + Deep Clean</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-chore-set/">
-        <img src="./images/2027-black-red/chore-set/card.png" alt="Kids Chore Chart Set — Red Accent · Routine + Family Chart"
-             width="600" height="600" loading="lazy">
-        <h3>Kids Chore Chart Set — Red Accent · Routine + Family Chart</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/chore-set/">
-        <img src="./images/2027-classic/chore-set/card.png" alt="Kids Chore Chart Set · Routine + Family Chart"
-             width="600" height="600" loading="lazy">
-        <h3>Kids Chore Chart Set · Routine + Family Chart</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-reading-set/">
-        <img src="./images/2027-black-red/reading-set/card.png" alt="Reading Journal Set — Red Accent · Book Log + Bookshelf Tracker"
-             width="600" height="600" loading="lazy">
-        <h3>Reading Journal Set — Red Accent · Book Log + Bookshelf Tracker</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/reading-set/">
-        <img src="./images/2027-classic/reading-set/card.png" alt="Reading Journal Set · Book Log + Bookshelf Tracker"
-             width="600" height="600" loading="lazy">
-        <h3>Reading Journal Set · Book Log + Bookshelf Tracker</h3>
-        <span class="price">$2.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-year-in-pixels-set/">
-        <img src="./images/2027-black-red/year-in-pixels-set/card.png" alt="Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker"
-             width="600" height="600" loading="lazy">
-        <h3>Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker</h3>
-        <span class="price">$4.49</span>
-      </a>
-      <a class="tile" href="./p/year-in-pixels-set/">
-        <img src="./images/2027-classic/year-in-pixels-set/card.png" alt="Year in Pixels Set · Yearly Mood + Habit Tracker"
-             width="600" height="600" loading="lazy">
-        <h3>Year in Pixels Set · Yearly Mood + Habit Tracker</h3>
-        <span class="price">$4.49</span>
-      </a>
-      <a class="tile" href="./p/black-red-xmas-set/">
-        <img src="./images/2027-black-red/xmas-set/card.png" alt="Christmas Planner Set — Red Accent · Gift List + Countdown"
-             width="600" height="600" loading="lazy">
-        <h3>Christmas Planner Set — Red Accent · Gift List + Countdown</h3>
-        <span class="price">$3.99</span>
-      </a>
-      <a class="tile" href="./p/xmas-set/">
-        <img src="./images/2027-classic/xmas-set/card.png" alt="Christmas Planner Set · Gift List + December Countdown"
-             width="600" height="600" loading="lazy">
-        <h3>Christmas Planner Set · Gift List + December Countdown</h3>
-        <span class="price">$3.99</span>
-      </a>
-      <a class="tile" href="./p/cozy-christmas-xmas-set/">
-        <img src="./images/2027-cozy-christmas/xmas-set/card.png" alt="Christmas Planner Set — Cozy Ornaments · Gift List + Countdown"
-             width="600" height="600" loading="lazy">
-        <h3>Christmas Planner Set — Cozy Ornaments · Gift List + Countdown</h3>
-        <span class="price">$3.99</span>
-      </a>
-      <a class="tile" href="./p/black-red-bundle/">
-        <img src="./images/2027-black-red/bundle/card.png" alt="2027 Calendar + Undated Planner + Budget Bundle — Red Accent"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Calendar + Undated Planner + Budget Bundle — Red Accent</h3>
-        <span class="price">$6.99</span>
-      </a>
-      <a class="tile" href="./p/bundle/">
-        <img src="./images/2027-classic/bundle/card.png" alt="2027 Calendar + Undated Planner + Budget Bundle"
-             width="600" height="600" loading="lazy">
-        <h3>2027 Calendar + Undated Planner + Budget Bundle</h3>
-        <span class="price">$6.99</span>
-      </a>
-    </div>
     <div class="kind" id="calendars">
     <div class="row-head kind-head">
       <h3 class="kind-name">Calendars <span>15</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#calendars">View all →</a></span>
     </div>
     <div class="cards">
       <a class="item" href="./p/black-red-free-glance/">
@@ -792,6 +591,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
     <div class="kind" id="planners">
     <div class="row-head kind-head">
       <h3 class="kind-name">Everyday Planners <span>14</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#planners">View all →</a></span>
     </div>
     <div class="cards">
       <a class="item" href="./p/black-red-planner-set/">
@@ -925,6 +725,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
     <div class="kind" id="seasonal">
     <div class="row-head kind-head">
       <h3 class="kind-name">Seasonal <span>3</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#seasonal">View all →</a></span>
     </div>
     <nav class="seasons" aria-label="Seasons">
       <a href="#seasonal">All seasons</a>
@@ -963,6 +764,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
     <div class="kind" id="bundles">
     <div class="row-head kind-head">
       <h3 class="kind-name">Bundles <span>2</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#bundles">View all →</a></span>
     </div>
     <div class="cards">
       <a class="item" href="./p/black-red-bundle/">
@@ -989,8 +791,8 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
 </section>
 <script>
 (function () {
-  /* 첫 화면은 전체 상품을 한 줄로 옆으로 넘긴다(rails). 칸·계절을
-     고르거나 #all(View all) 이면 칸별 격자로 다 펼친다. */
+  /* 첫 화면은 칸마다 옆으로 넘기는 줄(rails). 칸·계절을 고르거나
+     #all 이면 격자로 다 펼친다. */
   var shop = document.getElementById("shop");
   var kinds = document.querySelectorAll(".kind");
   var links = document.querySelectorAll(".kinds a");
@@ -1033,7 +835,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
   /* ‹ › 단추: 같은 칸의 줄을 한 화면 폭만큼 민다. */
   document.querySelectorAll(".arrows button").forEach(function (button) {
     button.addEventListener("click", function () {
-      var box = button.closest("section");
+      var box = button.closest(".kind") || button.closest("section");
       var rail = box.querySelector(".rail, .cards");
       rail.scrollBy({left: rail.clientWidth * 0.9 * button.getAttribute("data-dir"),
                      behavior: "smooth"});
