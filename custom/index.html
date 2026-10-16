@@ -274,6 +274,7 @@ body.home{background-color:var(--paper);
          padding:clamp(1.3rem,4vw,2.2rem);display:grid;gap:1.1rem}
 .request label{display:grid;gap:.35rem;font-size:.86rem;letter-spacing:.04em;color:var(--soft)}
 .request small{color:var(--faint)}
+.captcha-ask{color:var(--red);font-size:.88rem;margin:0}
 .request input,.request select,.request textarea{font:inherit;font-size:1rem;color:var(--ink);
   background:var(--paper);border:1px solid var(--rule);padding:.65rem .75rem;border-radius:0;width:100%}
 .request input:focus,.request select:focus,.request textarea:focus{outline:2px solid var(--red);outline-offset:1px}
@@ -349,8 +350,8 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
         <p>What it is, which paper size, and how you'll use it. A sketch or a
           link to something similar helps a lot.</p></div>
       <div class="step"><b>2</b><h3>Suggest an idea</h3>
-        <p>If other people would use it too, I make it for the shop and send
-          you a copy free when it's out.</p></div>
+        <p>Tell me your idea. If other people would use it too, I may make
+          it for the shop.</p></div>
       <div class="step"><b>3</b><h3>Or made just for you</h3>
         <p>A one-of-a-kind page. I email you a quote first, and nothing is
           charged until you say yes.</p></div>
@@ -365,7 +366,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
       <fieldset class="kind-pick">
         <legend>What kind of request?</legend>
         <label><input type="radio" name="request_type" value="Idea for the shop" checked>
-          <span><b>Suggest an idea</b> Free for you if I make it</span></label>
+          <span><b>Suggest an idea</b> Tell me your idea</span></label>
         <label><input type="radio" name="request_type" value="Made just for me">
           <span><b>Made just for me</b> Paid, quote by email first</span></label>
       </fieldset>
@@ -393,6 +394,20 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
           placeholder="What goes on the page, how often you'd use it, anything you've tried that didn't work…"></textarea></label>
       <label>A link to something similar <small>(optional)</small>
         <input type="url" name="reference" placeholder="https://"></label>
+      
+      <div class="h-captcha" data-captcha="true"></div>
+      <p class="captcha-ask" hidden>Please tick the box above first, so I know you're not a robot.</p>
+      <script src="https://web3forms.com/client/script.js" async defer></script>
+      <script>
+      document.currentScript.closest("form").addEventListener("submit", function (event) {
+        var tick = this.querySelector('[name="h-captcha-response"]');
+        if (tick && !tick.value) {
+          event.preventDefault();
+          this.querySelector(".captcha-ask").hidden = false;
+        }
+      });
+      </script>
+
       <button class="btn" type="submit">Send my request</button>
       <p class="fine">Your message goes to my inbox through Web3Forms and is used
         only to answer you. <a href="../privacy/">Privacy</a></p>
