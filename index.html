@@ -138,10 +138,27 @@ body.home{background-color:var(--paper);
         gap:1rem;padding-top:1rem;padding-bottom:1rem;flex-wrap:wrap}
 .logo{font-family:var(--display);font-weight:700;font-size:1.6rem;
       text-decoration:none;letter-spacing:-.01em}
-.top-links{display:flex;gap:1.4rem;flex-wrap:wrap}
-.top-links a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
-             text-decoration:none;color:var(--soft)}
+.top-links{display:flex;gap:2rem;flex-wrap:wrap}
+.top-links a{font-size:.88rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+             text-decoration:none;color:var(--ink)}
+.top-links{align-items:center}
+.top-links{align-items:center}
 .top-links a:hover{color:var(--red)}
+.menu{position:relative;display:flex}
+/* Shop 아래 펼친 목록. 메뉴와 목록 사이 틈에서 마우스가 빠져도 닫히지 않게
+   위쪽을 padding 으로 잇는다. */
+.drop{display:none;position:absolute;left:-1.1rem;top:100%;padding-top:.8rem;z-index:5;min-width:14rem}
+.drop::before{content:"";position:absolute;inset:.8rem 0 0;background:var(--card);
+              border:1px solid var(--rule);box-shadow:0 12px 30px rgba(30,28,26,.12)}
+.top-links .drop a{position:relative;display:block;padding:.55rem 1.1rem;font-size:.95rem;
+        font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink)}
+.top-links .drop a:first-child{margin-top:.5rem}.top-links .drop a:last-child{margin-bottom:.5rem}
+.top-links .drop a:hover{background:var(--band);color:var(--red)}
+.menu:hover .drop,.menu:focus-within .drop{display:block}
+@media (hover:none),(max-width:40rem){.drop{display:none!important}}
+/* New in 은 눈에 띄게 (2026-10-16 사용자 요청 - 알약은 안 예뻐서 바꿨다). */
+.top-links a.pill{color:var(--red);position:relative}
+.top-links a.pill{text-decoration:underline wavy var(--red);text-underline-offset:.4em;text-decoration-thickness:1.5px}
 /* 첫 화면. 넓으면 카드가 글 양옆으로 흩어지고, 좁으면 글 위에 겹쳐 선다. */
 .hero{position:relative;overflow:hidden;min-height:34rem;display:flex;
       align-items:center;justify-content:center;padding:4rem 1.3rem 5rem}
@@ -205,13 +222,6 @@ body.home{background-color:var(--paper);
 .marquee span{margin:0 1.4rem}.marquee i{font-style:normal;opacity:.7}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.marquee-in{animation:none}}
-.themes{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr))}
-.theme{position:relative;display:block;text-decoration:none;color:inherit;
-       background:var(--card);border:1px solid var(--rule);padding:.5rem .5rem .9rem;text-align:center}
-.theme:hover{border-color:var(--red)}
-.theme img{display:block;width:100%;height:auto;margin-bottom:.7rem}
-.theme-name{display:block;font-family:var(--display);font-weight:700;font-size:1.08rem}
-.theme-count{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .home .cards .item{background:var(--card)}
 .home .item h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
                font-weight:500;font-size:.98rem;line-height:1.45}
@@ -221,35 +231,104 @@ body.home{background-color:var(--paper);
 .seasons a{font-size:.8rem;text-decoration:none;color:var(--soft);padding:.2rem .8rem;
            border:1px solid var(--rule);border-radius:999px;background:var(--card)}
 .seasons a[aria-current]{border-color:var(--red);color:var(--red)}
-.theme-on{margin:-.6rem 0 1.4rem;font-size:.92rem;color:var(--soft)}
-.theme-on a{color:var(--red)}
 .home .why{background:var(--band)}
 .home footer{background:var(--paper)}
 .home .wrap.shelf{max-width:72rem}
+/* 첫 화면: 칸마다 옆으로 넘기는 줄. View all(#칸) 이나 #all 이면 격자로 다 편다. */
+.shelf.rails .cards{grid-template-columns:none;grid-auto-flow:column;
+  grid-auto-columns:minmax(15rem,17rem);overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:.8rem;scrollbar-width:thin}
+.shelf.rails .cards .item{scroll-snap-align:start}
+.shelf:not(.rails) .view-all{display:none}
+.kind-head{margin-bottom:1rem}.kind-head .kind-name{margin:0}
+.view-all{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);
+          text-decoration:none;white-space:nowrap}
+@media (max-width:40rem){.shelf.rails .cards{grid-auto-columns:72%}}
 @media (max-width:40rem){
-  .themes{grid-template-columns:repeat(2,1fr);gap:.8rem}
-  .theme-name{font-size:.98rem}
-  .top-links{gap:1rem}
+  /* 휴대폰: 메뉴 다섯 칸을 한 줄로 두고 옆으로 민다. */
+  .top-links{gap:.5rem;flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:.2rem;scrollbar-width:none;
+             justify-content:space-between}
+  .top-links a{flex:none;font-size:.68rem;letter-spacing:.03em}
   .top-links a.wide-only,.ribbon .wide-only{display:none}
 }
+/* About · 주문 제작 쪽 */
+.about-hero{min-height:0;padding:3.5rem 1.3rem 1.5rem}
+.center{text-align:center}.center .sec-lead{margin-bottom:1.4rem}
+.ways{display:grid;gap:2.4rem 2rem;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))}
+.way{margin:0;background:var(--card);border:1px solid var(--rule);padding:.6rem .6rem 1.4rem}
+.way img{display:block;width:100%;height:auto}
+.way figcaption{padding:1rem .8rem 0}
+.way-no{font-family:var(--display);font-weight:700;color:var(--red);font-size:.95rem}
+.way h3{font-family:var(--display);font-size:1.3rem;margin:.2rem 0 .4rem}
+.way p{margin:0;color:var(--soft);font-size:.96rem;line-height:1.7}
+.fact a{color:var(--red)}
+.steps{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));margin-bottom:2.6rem}
+.step{background:var(--card);border:1px solid var(--rule);padding:1.3rem 1.4rem}
+.step b{font-family:var(--display);font-size:1.8rem;color:var(--red);line-height:1}
+.step h3{font-family:var(--display);font-size:1.15rem;margin:.5rem 0 .3rem}
+.step p{margin:0;color:var(--soft);font-size:.94rem}
+.request{max-width:44rem;margin:0 auto;background:var(--card);border:1px solid var(--rule);
+         padding:clamp(1.3rem,4vw,2.2rem);display:grid;gap:1.1rem}
+.request label{display:grid;gap:.35rem;font-size:.86rem;letter-spacing:.04em;color:var(--soft)}
+.request small{color:var(--faint)}
+.request input,.request select,.request textarea{font:inherit;font-size:1rem;color:var(--ink);
+  background:var(--paper);border:1px solid var(--rule);padding:.65rem .75rem;border-radius:0;width:100%}
+.request input:focus,.request select:focus,.request textarea:focus{outline:2px solid var(--red);outline-offset:1px}
+.two{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.kind-pick{border:0;padding:0;margin:0;display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.kind-pick legend{font-size:.86rem;color:var(--soft);margin-bottom:.5rem}
+.kind-pick label{display:flex;gap:.6rem;align-items:flex-start;border:1px solid var(--rule);
+  padding:.8rem .9rem;cursor:pointer;background:var(--paper)}
+.kind-pick label:has(input:checked){border-color:var(--red)}
+.kind-pick input{width:auto;margin-top:.3rem;accent-color:var(--red)}
+.kind-pick b{display:block;color:var(--ink);font-size:.98rem;letter-spacing:0}
+.request .btn{border:0;cursor:pointer;justify-self:start}
+.trap{position:absolute;left:-9999px}
+.elsewhere{max-width:44rem;margin:1.6rem auto 0;text-align:center;font-size:.92rem;color:var(--soft)}
+.elsewhere p{margin:0 0 .5rem}.elsewhere a{margin:0 .6rem;color:var(--red)}
+.fine{font-size:.8rem;color:var(--faint);margin:0}.fine a{color:var(--soft)}
+.head-end{display:flex;align-items:center;gap:1rem}
+.arrows{display:flex;gap:.35rem}
+.arrows button{width:2rem;height:2rem;border:1px solid var(--rule);background:var(--card);
+  color:var(--ink);font-size:1.1rem;line-height:1;cursor:pointer;border-radius:50%}
+.arrows button:hover{border-color:var(--red);color:var(--red)}
+.shelf:not(.rails) .arrows{display:none}
+@media (hover:none),(max-width:40rem){.arrows{display:none}}
 </style>
 
 </head>
 <body class="home">
 
-<p class="ribbon">Instant download · A4 + US Letter<span class="wide-only"> · Print at home or tap through in GoodNotes</span></p>
 
+<p class="ribbon">Instant download · A4 + US Letter<span class="wide-only"> · Print at home or tap through in GoodNotes</span></p>
 <nav class="top" aria-label="Site">
   <div class="wrap wide top-in">
     <a class="logo" href="./">RuledByPaper</a>
     <div class="top-links">
-      <a href="#new">New in</a>
-      <a href="#themes">Themes</a>
-      <a href="#all">Shop</a>
-      <a class="wide-only" href="#calendars">Free calendar</a>
+      <a class="top-item" href="about/">About us</a>
+      <a class="top-item pill" href="#new">New in</a>
+      <div class="menu">
+        <a class="top-item" href="#all">Shop</a>
+        <div class="drop">
+          <a href="#all">All products</a>
+          <a href="#calendars">Calendars</a>
+          <a href="#planners">Everyday Planners</a>
+          <a href="#seasonal">Seasonal</a>
+          <a href="#bundles">Bundles</a>
+        </div>
+      </div>
+      <a class="top-item" href="custom/">Custom orders</a>
+      <a class="top-item" href="contact/">Contact</a>
     </div>
   </div>
 </nav>
+<script>
+/* 펼친 목록에서 고르면 닫는다 - 눌린 링크에 초점이 남아 계속 열려 있지 않게. */
+document.querySelectorAll(".top .drop a").forEach(function (link) {
+  link.addEventListener("click", function () { link.blur(); });
+});
+</script>
+
 
 <header class="hero">
   <div class="collage" aria-hidden="true">
@@ -285,7 +364,7 @@ body.home{background-color:var(--paper);
 
 <section class="sec plain" id="new">
   <div class="wrap wide">
-    <div class="row-head"><h2>New in</h2><a href="#all">View all →</a></div>
+    <div class="row-head"><h2>New in</h2><span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#all">View all →</a></span></div>
     <div class="rail">
       <a class="tile" href="./p/bakery-desk-calendar/">
         <img src="./images/2027-bakery/desk-calendar/card.png" alt="2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards"
@@ -348,76 +427,8 @@ body.home{background-color:var(--paper);
   <span>Free one-page calendar</span><i>✦</i>
 </div></div>
 
-<section class="sec plain" id="themes">
-  <div class="wrap wide">
-    <div class="row-head"><h2>Shop by theme</h2></div>
-    <div class="themes">
-      <a class="theme" href="#t-bakery">
-        <img src="./images/2027-bakery/desk-calendar/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Cozy Bakes</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-cats">
-        <img src="./images/2027-cats/desk-calendar/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Cozy Cats</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-cafe">
-        <img src="./images/2027-cafe/desk-calendar/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Cafe Drinks</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-bloom-pot">
-        <img src="./images/2027-bloom-pot/desk-calendar/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Birth Flowers · Botanical</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-bloom-glass">
-        <img src="./images/2027-bloom-glass/desk-calendar/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Birth Flowers · Watercolor</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-engraving">
-        <img src="./images/2027-engraving/monthly-calendar/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Vintage Botanical</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-cozy-christmas">
-        <img src="./images/2027-cozy-christmas/xmas-set/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Cozy Christmas</span>
-        <span class="theme-count">1 product</span>
-      </a>
-      <a class="theme" href="#t-black-red">
-        <img src="./images/2027-black-red/free-glance/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Red Accent</span>
-        <span class="theme-count">12 products</span>
-      </a>
-      <a class="theme" href="#t-classic">
-        <img src="./images/2027-classic/free-glance/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Black &amp; White</span>
-        <span class="theme-count">12 products</span>
-      </a>
-      <a class="theme" href="#t-weekend-colour">
-        <img src="./images/2027-weekend-colour/free-glance/card.png" alt=""
-             width="600" height="600" loading="lazy">
-        <span class="theme-name">Blue &amp; Red</span>
-        <span class="theme-count">3 products</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <section class="sec">
-  <div class="wrap shelf">
+  <div class="wrap shelf rails" id="shop">
     <h2>The whole shop</h2>
     <p class="sec-lead">Instant download. Print at home, or drop the files into
       GoodNotes on an iPad.</p>
@@ -428,11 +439,13 @@ body.home{background-color:var(--paper);
       <a href="#seasonal">Seasonal</a>
       <a href="#bundles">Bundles</a>
     </nav>
-    <p class="theme-on" hidden>Showing <b></b> · <a href="#all">show everything</a></p>
     <div class="kind" id="calendars">
-    <h3 class="kind-name">Calendars <span>15</span></h3>
+    <div class="row-head kind-head">
+      <h3 class="kind-name">Calendars <span>15</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#calendars">View all →</a></span>
+    </div>
     <div class="cards">
-      <a class="item" href="./p/black-red-free-glance/" data-theme="black-red">
+      <a class="item" href="./p/black-red-free-glance/">
         <img class="shot" src="./images/2027-black-red/free-glance/card.png"
              alt="2027 Year at a Glance — Free Printable Calendar, Red Accent" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -441,7 +454,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/free-glance/" data-theme="classic">
+      <a class="item" href="./p/free-glance/">
         <img class="shot" src="./images/2027-classic/free-glance/card.png"
              alt="2027 Year at a Glance — Free Printable One Page Calendar" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -450,7 +463,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/weekend-colour-free-glance/" data-theme="weekend-colour">
+      <a class="item" href="./p/weekend-colour-free-glance/">
         <img class="shot" src="./images/2027-weekend-colour/free-glance/card.png"
              alt="2027 Year at a Glance — Free Printable Calendar, Blue & Red Weekends" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -459,7 +472,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/black-red-monthly-calendar/" data-theme="black-red">
+      <a class="item" href="./p/black-red-monthly-calendar/">
         <img class="shot" src="./images/2027-black-red/monthly-calendar/card.png"
              alt="2027 Monthly Calendar — Red Accent | Printable + GoodNotes | A4 & US Letter" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -468,7 +481,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">6 PDF files · A4 + US Letter · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/monthly-calendar/" data-theme="classic">
+      <a class="item" href="./p/monthly-calendar/">
         <img class="shot" src="./images/2027-classic/monthly-calendar/card.png"
              alt="2027 Monthly Calendar — Black & White | Printable + GoodNotes | A4 & US Letter" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -477,7 +490,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">6 PDF files · A4 + US Letter · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/engraving-monthly-calendar/" data-theme="engraving">
+      <a class="item" href="./p/engraving-monthly-calendar/">
         <img class="shot" src="./images/2027-engraving/monthly-calendar/card.png"
              alt="2027 Monthly Calendar — Vintage Botanical | Printable + GoodNotes | A4 & US Letter" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -486,7 +499,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">6 PDF files · A4 + US Letter · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/weekend-colour-monthly-calendar/" data-theme="weekend-colour">
+      <a class="item" href="./p/weekend-colour-monthly-calendar/">
         <img class="shot" src="./images/2027-weekend-colour/monthly-calendar/card.png"
              alt="2027 Monthly Calendar — Blue & Red Weekends | Printable + GoodNotes | A4 & US Letter" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -495,7 +508,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">6 PDF files · A4 + US Letter · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/black-red-landscape-calendar/" data-theme="black-red">
+      <a class="item" href="./p/black-red-landscape-calendar/">
         <img class="shot" src="./images/2027-black-red/landscape-calendar/card.png"
              alt="2027 Landscape Wall Calendar — Red Accent | Printable | A4 & US Letter Landscape" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -504,7 +517,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">10 PDF files · A4 + US Letter landscape · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/landscape-calendar/" data-theme="classic">
+      <a class="item" href="./p/landscape-calendar/">
         <img class="shot" src="./images/2027-classic/landscape-calendar/card.png"
              alt="2027 Landscape Wall Calendar — Printable | A4 & US Letter Landscape" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -513,7 +526,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">10 PDF files · A4 + US Letter landscape · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/weekend-colour-landscape-calendar/" data-theme="weekend-colour">
+      <a class="item" href="./p/weekend-colour-landscape-calendar/">
         <img class="shot" src="./images/2027-weekend-colour/landscape-calendar/card.png"
              alt="2027 Landscape Wall Calendar — Blue & Red Weekends | Printable | A4 & US Letter Landscape" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -522,7 +535,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">10 PDF files · A4 + US Letter landscape · Printable + GoodNotes</p>
       </a>
-      <a class="item" href="./p/bakery-desk-calendar/" data-theme="bakery">
+      <a class="item" href="./p/bakery-desk-calendar/">
         <img class="shot" src="./images/2027-bakery/desk-calendar/card.png"
              alt="2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -531,7 +544,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/bloom-glass-desk-calendar/" data-theme="bloom-glass">
+      <a class="item" href="./p/bloom-glass-desk-calendar/">
         <img class="shot" src="./images/2027-bloom-glass/desk-calendar/card.png"
              alt="2027 Birth Flower Desk Calendar — Watercolor | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -540,7 +553,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/bloom-pot-desk-calendar/" data-theme="bloom-pot">
+      <a class="item" href="./p/bloom-pot-desk-calendar/">
         <img class="shot" src="./images/2027-bloom-pot/desk-calendar/card.png"
              alt="2027 Birth Flower Desk Calendar — Vintage Botanical | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -549,7 +562,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/cafe-desk-calendar/" data-theme="cafe">
+      <a class="item" href="./p/cafe-desk-calendar/">
         <img class="shot" src="./images/2027-cafe/desk-calendar/card.png"
              alt="2027 Coffee Desk Calendar — Seasonal Drinks | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -558,7 +571,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
-      <a class="item" href="./p/cats-desk-calendar/" data-theme="cats">
+      <a class="item" href="./p/cats-desk-calendar/">
         <img class="shot" src="./images/2027-cats/desk-calendar/card.png"
              alt="2027 Cat Desk Calendar — Cozy Watercolor Cats | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -570,9 +583,12 @@ body.home{background-color:var(--paper);
     </div>
     </div>
     <div class="kind" id="planners">
-    <h3 class="kind-name">Everyday Planners <span>14</span></h3>
+    <div class="row-head kind-head">
+      <h3 class="kind-name">Everyday Planners <span>14</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#planners">View all →</a></span>
+    </div>
     <div class="cards">
-      <a class="item" href="./p/black-red-planner-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-planner-set/">
         <img class="shot" src="./images/2027-black-red/planner-set/card.png"
              alt="Undated Weekly Planner Set — Red Accent · Habit Tracker, To-Do, Notes" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -581,7 +597,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">14 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/planner-set/" data-theme="classic">
+      <a class="item" href="./p/planner-set/">
         <img class="shot" src="./images/2027-classic/planner-set/card.png"
              alt="Undated Weekly Planner Set · Habit Tracker, To-Do, Notes" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -590,7 +606,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">14 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/black-red-budget-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-budget-set/">
         <img class="shot" src="./images/2027-black-red/budget-set/card.png"
              alt="Printable Budget Set — Red Accent · Cash Envelope Inserts" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -599,7 +615,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">10 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/budget-set/" data-theme="classic">
+      <a class="item" href="./p/budget-set/">
         <img class="shot" src="./images/2027-classic/budget-set/card.png"
              alt="Printable Budget Set · Cash Envelope Inserts" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -608,7 +624,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">10 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/black-red-meal-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-meal-set/">
         <img class="shot" src="./images/2027-black-red/meal-set/card.png"
              alt="Meal Planner Set — Red Accent · Weekly Menu + Grocery List" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -617,7 +633,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/meal-set/" data-theme="classic">
+      <a class="item" href="./p/meal-set/">
         <img class="shot" src="./images/2027-classic/meal-set/card.png"
              alt="Meal Planner Set · Weekly Menu + Grocery List" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -626,7 +642,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/black-red-clean-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-clean-set/">
         <img class="shot" src="./images/2027-black-red/clean-set/card.png"
              alt="Cleaning Checklist Set — Red Accent · Room by Room + Deep Clean" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -635,7 +651,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/clean-set/" data-theme="classic">
+      <a class="item" href="./p/clean-set/">
         <img class="shot" src="./images/2027-classic/clean-set/card.png"
              alt="Cleaning Checklist Set · Room by Room + Deep Clean" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -644,7 +660,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/black-red-chore-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-chore-set/">
         <img class="shot" src="./images/2027-black-red/chore-set/card.png"
              alt="Kids Chore Chart Set — Red Accent · Routine + Family Chart" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -653,7 +669,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/chore-set/" data-theme="classic">
+      <a class="item" href="./p/chore-set/">
         <img class="shot" src="./images/2027-classic/chore-set/card.png"
              alt="Kids Chore Chart Set · Routine + Family Chart" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -662,7 +678,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/black-red-reading-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-reading-set/">
         <img class="shot" src="./images/2027-black-red/reading-set/card.png"
              alt="Reading Journal Set — Red Accent · Book Log + Bookshelf Tracker" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -671,7 +687,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">2 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/reading-set/" data-theme="classic">
+      <a class="item" href="./p/reading-set/">
         <img class="shot" src="./images/2027-classic/reading-set/card.png"
              alt="Reading Journal Set · Book Log + Bookshelf Tracker" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -680,7 +696,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">2 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/black-red-year-in-pixels-set/" data-theme="black-red">
+      <a class="item" href="./p/black-red-year-in-pixels-set/">
         <img class="shot" src="./images/2027-black-red/year-in-pixels-set/card.png"
              alt="Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -689,7 +705,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">2 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/year-in-pixels-set/" data-theme="classic">
+      <a class="item" href="./p/year-in-pixels-set/">
         <img class="shot" src="./images/2027-classic/year-in-pixels-set/card.png"
              alt="Year in Pixels Set · Yearly Mood + Habit Tracker" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -701,13 +717,16 @@ body.home{background-color:var(--paper);
     </div>
     </div>
     <div class="kind" id="seasonal">
-    <h3 class="kind-name">Seasonal <span>3</span></h3>
+    <div class="row-head kind-head">
+      <h3 class="kind-name">Seasonal <span>3</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#seasonal">View all →</a></span>
+    </div>
     <nav class="seasons" aria-label="Seasons">
       <a href="#seasonal">All seasons</a>
       <a href="#s-christmas">Christmas</a>
     </nav>
     <div class="cards">
-      <a class="item" href="./p/black-red-xmas-set/" data-theme="black-red" data-season="christmas">
+      <a class="item" href="./p/black-red-xmas-set/" data-season="christmas">
         <img class="shot" src="./images/2027-black-red/xmas-set/card.png"
              alt="Christmas Planner Set — Red Accent · Gift List + Countdown" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -716,7 +735,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">2 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/xmas-set/" data-theme="classic" data-season="christmas">
+      <a class="item" href="./p/xmas-set/" data-season="christmas">
         <img class="shot" src="./images/2027-classic/xmas-set/card.png"
              alt="Christmas Planner Set · Gift List + December Countdown" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -725,7 +744,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">2 PDF files · A4 + US Letter · Undated</p>
       </a>
-      <a class="item" href="./p/cozy-christmas-xmas-set/" data-theme="cozy-christmas" data-season="christmas">
+      <a class="item" href="./p/cozy-christmas-xmas-set/" data-season="christmas">
         <img class="shot" src="./images/2027-cozy-christmas/xmas-set/card.png"
              alt="Christmas Planner Set — Cozy Ornaments · Gift List + Countdown" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -737,9 +756,12 @@ body.home{background-color:var(--paper);
     </div>
     </div>
     <div class="kind" id="bundles">
-    <h3 class="kind-name">Bundles <span>2</span></h3>
+    <div class="row-head kind-head">
+      <h3 class="kind-name">Bundles <span>2</span></h3>
+      <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#bundles">View all →</a></span>
+    </div>
     <div class="cards">
-      <a class="item" href="./p/black-red-bundle/" data-theme="black-red">
+      <a class="item" href="./p/black-red-bundle/">
         <img class="shot" src="./images/2027-black-red/bundle/card.png"
              alt="2027 Calendar + Undated Planner + Budget Bundle — Red Accent" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -748,7 +770,7 @@ body.home{background-color:var(--paper);
         </div>
         <p class="files">34 PDF files · Calendar · Planner · Budget</p>
       </a>
-      <a class="item" href="./p/bundle/" data-theme="classic">
+      <a class="item" href="./p/bundle/">
         <img class="shot" src="./images/2027-classic/bundle/card.png"
              alt="2027 Calendar + Undated Planner + Budget Bundle" width="600" height="600" loading="lazy">
         <div class="item-top">
@@ -763,51 +785,58 @@ body.home{background-color:var(--paper);
 </section>
 <script>
 (function () {
+  /* 첫 화면은 칸마다 옆으로 넘기는 줄(rails). 칸·계절을 고르거나
+     #all 이면 격자로 다 펼친다. */
+  var shop = document.getElementById("shop");
   var kinds = document.querySelectorAll(".kind");
   var links = document.querySelectorAll(".kinds a");
   var items = document.querySelectorAll(".kind .item");
-  var note = document.querySelector(".theme-on");
-  var names = {};
-  document.querySelectorAll(".theme").forEach(function (tile) {
-    names[tile.getAttribute("href").slice(3)] =
-      tile.querySelector(".theme-name").textContent;
-  });
   function show() {
     var want = location.hash.slice(1);
-    var theme = want.indexOf("t-") === 0 && names[want.slice(2)] ? want.slice(2) : "";
     var season = want.indexOf("s-") === 0 &&
       document.querySelector('[data-season="' + want.slice(2) + '"]') ? want.slice(2) : "";
     if (season) want = "seasonal";
     var known = document.getElementById(want);
-    if (theme || !known || !known.classList.contains("kind")) want = "all";
+    var kind = known && known.classList.contains("kind") ? want : "";
+    var open = !!(season || kind || want === "all");
+    shop.classList.toggle("rails", !open);
     items.forEach(function (item) {
-      item.hidden = (!!theme && item.getAttribute("data-theme") !== theme) ||
-                    (!!season && item.getAttribute("data-season") !== season);
+      item.hidden = !!season && item.getAttribute("data-season") !== season;
+    });
+    kinds.forEach(function (box) {
+      var left = box.querySelectorAll(".item:not([hidden])").length;
+      box.hidden = (!!kind && box.id !== kind) || left === 0;
+    });
+    var current = kind ? "#" + kind : (open ? "#all" : "");
+    links.forEach(function (link) {
+      if (link.getAttribute("href") === current) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
     });
     document.querySelectorAll(".seasons a").forEach(function (link) {
       var mine = link.getAttribute("href") === (season ? "#s-" + season : "#seasonal");
       if (mine) link.setAttribute("aria-current", "true");
       else link.removeAttribute("aria-current");
     });
-    kinds.forEach(function (box) {
-      var left = box.querySelectorAll(".item:not([hidden])").length;
-      box.hidden = (want !== "all" && box.id !== want) || left === 0;
-    });
-    note.hidden = !theme;
-    if (theme) note.querySelector("b").textContent = names[theme];
-    links.forEach(function (link) {
-      if (!theme && link.getAttribute("href") === "#" + want) link.setAttribute("aria-current", "true");
-      else link.removeAttribute("aria-current");
-    });
+    return open;
   }
-  window.addEventListener("hashchange", function () {
+  function jump() {
     var want = location.hash.slice(1);
-    show();
-    if (want === "new" || want === "themes") return;
+    if (!show() || want === "new") return;
     var bar = document.querySelector(".kinds");
     window.scrollTo({top: bar.getBoundingClientRect().top + window.scrollY - 8});
+  }
+  window.addEventListener("hashchange", jump);
+  /* ‹ › 단추: 같은 칸의 줄을 한 화면 폭만큼 민다. */
+  document.querySelectorAll(".arrows button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var box = button.closest(".kind") || button.closest("section");
+      var rail = box.querySelector(".rail, .cards");
+      rail.scrollBy({left: rail.clientWidth * 0.9 * button.getAttribute("data-dir"),
+                     behavior: "smooth"});
+    });
   });
-  show();
+  /* 다른 쪽(About 등)의 메뉴에서 #all 로 들어오면 바로 그 자리로. */
+  if (show() && location.hash) setTimeout(jump, 0);
 })();
 </script>
 
@@ -855,6 +884,9 @@ body.home{background-color:var(--paper);
       <a href="https://ruledbypaper.gumroad.com">Shop</a>
       <a href="https://www.etsy.com/shop/RuledByPaper">Etsy</a>
       <a href="https://kr.pinterest.com/RuledByPaper/">Pinterest</a>
+      <a href="./about/">About us</a>
+      <a href="./custom/">Custom orders</a>
+      <a href="./contact/">Contact</a>
       <a href="./printing/">Printing guide</a>
       <a href="./privacy/">Privacy</a>
     </div>
