@@ -120,9 +120,33 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .buy .where{display:block;font-size:.72rem;letter-spacing:.16em;
             text-transform:uppercase;color:var(--faint);margin-top:.25rem}
 .buy:hover .where,.buy:focus-visible .where{color:inherit}
-/* 상세 쪽 커버. 세로로 쌓아 손가락으로 내리면서 보게 둔다. */
-.sec>.wrap>.shot{display:block;width:100%;height:auto;margin:0 0 1.2rem;
-                 border:1px solid var(--rule)}
+/* 상품 쪽 머리. 폰은 제목 -> 그림 -> 값·단추로 쌓고 (pd-info 를 풀어 차례를
+   섞는다), 넓은 화면은 왼쪽 그림 · 오른쪽 제목과 단추 - 단추 칸은 그림을
+   내려 봐도 따라온다 (2026-10-19 사용자: PC 에서 글이 가운데 좁은 띠에 몰린다). */
+.pd{padding:clamp(2.2rem,6vw,3.4rem) 0 clamp(2.5rem,6vw,4rem)}
+.pd-wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem;
+         display:flex;flex-direction:column}
+.pd-info{display:contents}
+.pd-head{order:1;text-align:center;margin-bottom:clamp(1.6rem,4vw,2.4rem)}
+.pd-shots{order:2}
+.pd-buy{order:3}
+.pd .mark{font-size:clamp(1.75rem,5vw,2.7rem);line-height:1.15}
+.pd .pitch{margin-top:1.4rem;font-size:1.05rem}
+.pd-shots .shot{display:block;width:100%;height:auto;margin:0 0 1.2rem;
+                border:1px solid var(--rule)}
+.pd-buy .price{font-size:1.6rem}
+.pd-buy .files{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+               color:var(--faint);margin:.3rem 0 1rem}
+@media (min-width:60rem){
+  .pd-wrap{max-width:68rem;display:grid;gap:3.5rem;align-items:start;
+           grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+  .pd-info{display:block;position:sticky;top:2rem}
+  .pd-head{text-align:left;margin-bottom:1.8rem}
+  .pd .mark{font-size:clamp(1.9rem,2.6vw,2.4rem)}
+  .pd .pitch{max-width:none;margin:1.2rem 0 0;line-height:1.7}
+  .pd-buy{border-top:1px solid var(--rule);padding-top:1.4rem}
+  .pd-buy .buy{display:block;text-align:center;margin:0 0 .7rem}
+}
 .prose{max-width:34rem}
 .prose h3{font-family:var(--display);font-size:1.15rem;margin:2rem 0 .3rem}
 .prose ol,.prose ul{padding-left:1.2rem;color:var(--soft)}
@@ -131,9 +155,8 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
    본문이 같은 모양이다). 넓으면 두 단 카드, 폰에서는 한 단으로 접힌다. */
 .about{background:var(--band);border-top:1px solid var(--rule);
        padding:clamp(2.4rem,6vw,4rem) 0}
-.about .wrap,.faq .wrap{max-width:60rem}
-.about-kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
-              color:var(--red);margin:0 0 .9rem}
+.about .wrap,.faq .wrap{max-width:68rem}
+.about-head{margin:0 0 1rem}
 /* 소개 문장은 본문 글꼴 보통 굵기로 (2026-10-19 사용자: 전체가 굵어 읽기 힘들다).
    한 줄은 영어 70자 안팎에서 끊고, 줄 끝에 낱말 하나만 남지 않게 한다. */
 .about-intro{font-size:clamp(1.05rem,1.6vw,1.15rem);line-height:1.75;
@@ -163,35 +186,34 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 
 </head>
 <body>
-
-<header class="sub">
-  <div class="wrap">
-    <a class="back" href="../../">RuledByPaper</a>
-    <h1 class="mark">Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker</h1>
-    <p class="pitch">Nine pages, one square for every day of the year. Trackers for mood, a habit, sleep, water, movement, reading and spending, a blank one for your own, and a month-by-month year in review. No dates, so it works every year.</p>
-  </div>
-</header>
-
-<section class="sec">
-  <div class="wrap">
-    <img class="shot" src="../../images/2027-black-red/year-in-pixels-set/cover-1.png"
-         alt="Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker">
-    <img class="shot" src="../../images/2027-black-red/year-in-pixels-set/cover-2.png"
-         alt="Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker" loading="lazy">
-    <div class="item-top">
-      <h2>What you get</h2>
-      <span class="price">$4.49</span>
+<main class="pd">
+  <div class="pd-wrap">
+    <div class="pd-shots">
+      <img class="shot" src="../../images/2027-black-red/year-in-pixels-set/cover-1.png"
+           alt="Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker">
+      <img class="shot" src="../../images/2027-black-red/year-in-pixels-set/cover-2.png"
+           alt="Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker" loading="lazy">
     </div>
-    <p class="files">2 PDF files · A4 + US Letter · Undated</p>
-    <p><a class="buy" href="https://ruledbypaper.gumroad.com/l/qudbbm">Buy now — $4.49
-      <span class="where">on Gumroad</span></a>
-      <a class="buy" href="https://www.etsy.com/listing/4594814258">Buy now — $4.49
-      <span class="where">on Etsy</span></a></p>
+    <div class="pd-info">
+      <div class="pd-head">
+        <a class="back" href="../../">RuledByPaper</a>
+        <h1 class="mark">Year in Pixels Set — Red Accent · Yearly Mood + Habit Tracker</h1>
+        <p class="pitch">Nine pages, one square for every day of the year. Trackers for mood, a habit, sleep, water, movement, reading and spending, a blank one for your own, and a month-by-month year in review. No dates, so it works every year.</p>
+      </div>
+      <div class="pd-buy">
+        <span class="price">$4.49</span>
+        <p class="files">2 PDF files · A4 + US Letter · Undated</p>
+        <p><a class="buy" href="https://ruledbypaper.gumroad.com/l/qudbbm">Buy now — $4.49
+          <span class="where">on Gumroad</span></a>
+          <a class="buy" href="https://www.etsy.com/listing/4594814258">Buy now — $4.49
+          <span class="where">on Etsy</span></a></p>
+      </div>
+    </div>
   </div>
-</section>
+</main>
 <section class="about">
   <div class="wrap">
-    <p class="about-kicker">About this product</p>
+    <h2 class="about-head">About this product</h2>
     <p class="about-intro">The same year in pixels set, with a deep red on the month letters across the top of every tracker, on the small YEAR label, and on the month names of the year in review.</p>
     <div class="about-grid">
       <div class="about-block">
