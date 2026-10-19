@@ -122,39 +122,60 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .buy .where{display:block;font-size:.72rem;letter-spacing:.16em;
             text-transform:uppercase;color:var(--faint);margin-top:.25rem}
 .buy:hover .where,.buy:focus-visible .where{color:inherit}
-/* 상품 쪽 머리. 폰은 제목 -> 그림 -> 값·단추로 쌓고 (pd-info 를 풀어 차례를
-   섞는다), 넓은 화면은 왼쪽 그림 · 오른쪽 제목과 단추 - 단추 칸은 그림을
-   내려 봐도 따라온다 (2026-10-19 사용자: PC 에서 글이 가운데 좁은 띠에 몰린다). */
-.pd{padding:clamp(2.2rem,6vw,3.4rem) 0 clamp(2.5rem,6vw,4rem)}
-.pd-wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem;
-         display:flex;flex-direction:column}
-.pd-info{display:contents}
-.pd-head{order:1;text-align:center;margin-bottom:clamp(1.6rem,4vw,2.4rem)}
-.pd-shots{order:2}
-.pd-buy{order:3}
-.pd .mark{font-size:clamp(1.75rem,5vw,2.7rem);line-height:1.15}
-.pd .pitch{margin-top:1.4rem;font-size:1.05rem}
-.pd-shots .shot{display:block;width:100%;height:auto;margin:0 0 .8rem;
-                border:1px solid var(--rule)}
-.thumbs{display:flex;gap:.6rem;margin:0 0 1.4rem;flex-wrap:wrap}
-.thumb{padding:0;border:1px solid var(--rule);background:none;cursor:pointer;
-       width:5.2rem;opacity:.55;transition:opacity .15s,border-color .15s}
+/* 상품 쪽 - Etsy 짜임 (2026-10-19 사용자). 폰: 길잡이 -> 큰 그림 -> 작은 그림
+   가로줄 -> 값·이름·가게·단추·정보. 넓으면 왼쪽 작은 그림 세로줄 + 큰 그림,
+   오른쪽 정보 칸 - 정보 칸은 그림을 내려 봐도 따라온다. */
+.pd{padding:1.1rem 0 clamp(2.5rem,6vw,4rem)}
+.pd-wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;
+        font-size:.82rem;color:var(--faint);margin:0 0 1.1rem}
+.crumbs a{color:var(--soft);text-underline-offset:.2em}
+.crumbs a:hover{color:var(--red)}
+.pd-shots{display:grid;grid-template-areas:"main" "thumbs";gap:.7rem;margin:0 0 1.6rem}
+.stage{grid-area:main;position:relative}
+.pd-shots .shot{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+.stage-prev,.stage-next{position:absolute;top:50%;transform:translateY(-50%);
+  width:2.6rem;height:2.6rem;border-radius:50%;border:0;padding:0 0 .2rem;
+  background:var(--card);color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer;
+  box-shadow:0 2px 10px rgba(30,28,26,.18)}
+.stage-prev{left:.8rem}.stage-next{right:.8rem}
+.stage-prev:hover,.stage-next:hover{background:var(--ink);color:var(--paper)}
+.thumbs{grid-area:thumbs;display:flex;gap:.6rem;overflow-x:auto;scrollbar-width:none}
+.thumb{flex:none;width:4.6rem;padding:0;border:1px solid var(--rule);background:none;
+       cursor:pointer;opacity:.6;transition:opacity .15s,border-color .15s}
 .thumb img{display:block;width:100%;height:auto}
 .thumb:hover,.thumb:focus-visible{opacity:1}
-.thumb.on{opacity:1;border-color:var(--ink)}
-.pd-buy .price{font-size:1.6rem}
-.pd-buy .files{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-               color:var(--faint);margin:.3rem 0 1rem}
+.thumb.on{opacity:1;border:2px solid var(--ink)}
+.pd-info .price{display:block;font-family:var(--sans);font-weight:700;
+                font-size:1.75rem;line-height:1.2;letter-spacing:-.01em}
+.pd-title{font-family:var(--sans);font-weight:400;font-size:1.12rem;
+          line-height:1.5;margin:.6rem 0 .3rem}
+.shop-name{display:inline-block;font-weight:700;font-size:.95rem;
+           text-decoration:none;margin:0 0 1.4rem}
+.shop-name:hover{color:var(--red)}
+.buys{display:grid;gap:.7rem}
+.pd-info .buy{display:block;text-align:center;border:2px solid var(--ink);
+              border-radius:999px;padding:.75rem 1.4rem;margin:0;font-weight:600}
+.pd-info .buy .where{margin-top:.1rem;font-weight:400}
+.pd-info .buy.main{background:var(--ink);color:var(--paper)}
+.pd-info .buy.main .where{color:inherit;opacity:.75}
+.pd-info .buy.main:hover{background:var(--red);border-color:var(--red)}
+.details{margin-top:2rem;border-top:1px solid var(--rule);padding-top:1.3rem}
+.details h2{font-family:var(--sans);font-size:1rem;font-weight:700;
+            letter-spacing:0;margin:0 0 .7rem}
+.details .hl{position:relative;padding-left:1.3rem;margin:.25rem 0;font-size:.95rem}
+.details .hl::before{content:"";position:absolute;left:.15rem;top:.62em;
+                     width:.45rem;height:.45rem;background:var(--red)}
+.details .pitch{max-width:none;margin:1rem 0 0;font-size:.98rem;line-height:1.7;
+                color:var(--soft);text-wrap:pretty}
 @media (min-width:60rem){
-  .pd-wrap{max-width:68rem;display:grid;gap:3.5rem;align-items:start;
-           grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
-  .pd-shots{order:0}
-  .pd-info{display:block;position:sticky;top:2rem}
-  .pd-head{text-align:left;margin-bottom:1.8rem}
-  .pd .mark{font-size:clamp(1.9rem,2.6vw,2.4rem)}
-  .pd .pitch{max-width:none;margin:1.2rem 0 0;line-height:1.7}
-  .pd-buy{border-top:1px solid var(--rule);padding-top:1.4rem}
-  .pd-buy .buy{display:block;text-align:center;margin:0 0 .7rem}
+  .pd-wrap{max-width:72rem;display:grid;align-items:start;column-gap:3.5rem;
+           grid-template-columns:minmax(0,1fr) 24rem}
+  .crumbs{grid-column:1/-1}
+  .pd-shots{grid-template-areas:"thumbs main";grid-template-columns:4.6rem minmax(0,1fr);
+            align-items:start;gap:1rem;margin:0}
+  .thumbs{flex-direction:column;overflow:visible}
+  .pd-info{position:sticky;top:1.5rem}
 }
 .prose{max-width:34rem}
 .prose h3{font-family:var(--display);font-size:1.15rem;margin:2rem 0 .3rem}
@@ -196,13 +217,231 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .qa .a{font-size:.95rem;line-height:1.65;color:var(--soft);margin:.45rem 0 0}
 </style>
 
+
+<style>
+body.home{background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px}
+.wrap.wide{max-width:72rem}
+.ribbon{margin:0;background:var(--ink);color:var(--paper);text-align:center;
+        font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem 1rem}
+.top{border-bottom:1px solid var(--rule);background:var(--paper)}
+.top-in{display:flex;align-items:center;justify-content:space-between;
+        gap:1rem;padding-top:1rem;padding-bottom:1rem;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:700;font-size:1.6rem;
+      text-decoration:none;letter-spacing:-.01em}
+.top-links{display:flex;gap:2rem;flex-wrap:wrap}
+.top-links a{font-size:.88rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+             text-decoration:none;color:var(--ink)}
+.top-links{align-items:center}
+.top-links{align-items:center}
+.top-links a:hover{color:var(--red)}
+.menu{position:relative;display:flex}
+/* Shop 아래 펼친 목록. 메뉴와 목록 사이 틈에서 마우스가 빠져도 닫히지 않게
+   위쪽을 padding 으로 잇는다. */
+.drop{display:none;position:absolute;left:-1.1rem;top:100%;padding-top:.8rem;z-index:5;min-width:14rem}
+.drop::before{content:"";position:absolute;inset:.8rem 0 0;background:var(--card);
+              border:1px solid var(--rule);box-shadow:0 12px 30px rgba(30,28,26,.12)}
+.top-links .drop a{position:relative;display:block;padding:.55rem 1.1rem;font-size:.95rem;
+        font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink)}
+.top-links .drop a:first-child{margin-top:.5rem}.top-links .drop a:last-child{margin-bottom:.5rem}
+.top-links .drop a:hover{background:var(--band);color:var(--red)}
+.menu:hover .drop,.menu:focus-within .drop{display:block}
+@media (hover:none),(max-width:40rem){.drop{display:none!important}}
+/* New in 은 눈에 띄게 (2026-10-16 사용자 요청 - 알약은 안 예뻐서 바꿨다). */
+.top-links a.pill{color:var(--red);position:relative}
+.top-links a.pill{text-decoration:underline wavy var(--red);text-underline-offset:.4em;text-decoration-thickness:1.5px}
+/* 첫 화면. 넓으면 카드가 글 양옆으로 흩어지고, 좁으면 글 위에 겹쳐 선다. */
+.hero{position:relative;overflow:hidden;min-height:34rem;display:flex;
+      align-items:center;justify-content:center;padding:4rem 1.3rem 5rem}
+.hero-copy{position:relative;z-index:1;text-align:center;max-width:30rem;
+           background:var(--paper);padding:1.6rem 1.4rem;
+           box-shadow:0 0 0 1px var(--rule)}
+.kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+        color:var(--red);margin:0 0 1rem}
+/* "Paper that leaves / room for you" 두 덩이로만 끊는다. 글자를 칸보다 넉넉히
+   작게 두어, 글꼴이 조금 넓게 그려지는 컴퓨터에서도 덩이 안에서 다시 끊기지 않게. */
+.hero .mark{font-size:clamp(1.8rem,8.4vw,3.3rem);line-height:1.08}
+.hero .mark span{display:inline-block}
+.hero .pitch{margin:1.2rem auto 0;font-size:1.05rem}
+.ctas{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+     font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 1.5rem}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.collage img{position:absolute;width:15rem;height:auto;background:#fff;
+             padding:.55rem .55rem 1.6rem;box-shadow:0 10px 30px rgba(30,28,26,.16)}
+.collage .c1{left:4%;top:9%;transform:rotate(-7deg)}
+.collage .c2{left:13%;bottom:-3%;transform:rotate(5deg);width:13rem}
+.collage .c3{right:5%;top:7%;transform:rotate(6deg)}
+.collage .c4{right:15%;bottom:-6%;transform:rotate(-5deg);width:13rem}
+@media (max-width:60rem){
+  .hero{flex-direction:column;min-height:0;padding:2rem 1rem 3rem}
+  .collage{position:relative;height:13rem;width:100%;max-width:24rem;margin-bottom:-1.5rem}
+  .collage img{width:9.5rem;padding:.35rem .35rem 1rem}
+  .collage .c1{left:0;top:1rem;bottom:auto;right:auto}
+  .collage .c2{left:50%;top:0;margin-left:-4.75rem;transform:rotate(2deg);width:9.5rem;bottom:auto;right:auto}
+  .collage .c3{right:0;top:1.4rem;left:auto;bottom:auto}
+  .collage .c4{display:none}
+}
+/* 물결 가장자리 띠. 위 모눈에서 먹색 띠로 넘어간다. */
+.band{background:var(--night);color:#FAF7F0;text-align:center;
+      padding:3.2rem 0 3rem;position:relative}
+.band::before{content:"";position:absolute;left:0;right:0;top:-13px;height:14px;
+  background:radial-gradient(circle at 13px 14px,var(--night) 12px,transparent 13px) 0 0/26px 14px repeat-x}
+.band-kick{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+           color:#E8A79E;margin:0 0 .9rem}
+.band-text{max-width:36rem;margin:0 auto;font-size:1.08rem;line-height:1.8;
+           color:rgba(250,247,240,.88)}
+/* 문장마다 새 줄에서 시작하고, 줄 길이를 고르게 맞춰 끝에 한두 낱말만 남지 않게. */
+.band-text span{display:block;text-wrap:balance}
+.sec.plain{border-top:0}
+.row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.3rem}
+.row-head h2{font-size:clamp(1.7rem,4vw,2.3rem);margin:0}
+.row-head a{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);
+            text-decoration:none}
+/* 옆으로 넘기는 줄. 손가락으로 밀면 카드 한 장씩 멈춘다. */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(13.5rem,1fr);
+      gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.8rem;
+      scrollbar-width:thin}
+@media (max-width:60rem){.rail{grid-auto-columns:62%}}
+.tile{scroll-snap-align:start;background:var(--card);border:1px solid var(--rule);
+      text-decoration:none;color:inherit;padding:0 0 1rem;display:flex;flex-direction:column}
+.tile:hover{border-color:var(--ink)}
+.tile img{display:block;width:100%;height:auto}
+.tile h3{font-size:.92rem;line-height:1.45;margin:.8rem 1rem .4rem;font-weight:500;
+         display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .price{margin:auto 1rem 0;font-size:1.05rem}
+.marquee{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;
+         padding:.75rem 0;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.marquee-in{display:inline-block;animation:slide 38s linear infinite}
+.marquee span{margin:0 1.4rem}.marquee i{font-style:normal;opacity:.7}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-in{animation:none}}
+.home .cards .item{background:var(--card)}
+.home .item h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+               font-weight:500;font-size:.98rem;line-height:1.45}
+.home .kinds{background:var(--paper)}
+.home .kinds a[aria-current]{background:var(--red);border-color:var(--red);color:#fff}
+.seasons{display:flex;gap:.4rem;flex-wrap:wrap;margin:-.3rem 0 1.1rem}
+.seasons a{font-size:.8rem;text-decoration:none;color:var(--soft);padding:.2rem .8rem;
+           border:1px solid var(--rule);border-radius:999px;background:var(--card)}
+.seasons a[aria-current]{border-color:var(--red);color:var(--red)}
+.home .why{background:var(--band)}
+.home footer{background:var(--paper)}
+.home .wrap.shelf{max-width:72rem}
+/* 첫 화면: 칸마다 옆으로 넘기는 줄. View all(#칸) 이나 #all 이면 격자로 다 편다. */
+.shelf.rails .cards{grid-template-columns:none;grid-auto-flow:column;
+  grid-auto-columns:13.5rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:.8rem;scrollbar-width:thin}
+.shelf.rails .cards .item{scroll-snap-align:start}
+.shelf:not(.rails) .view-all{display:none}
+.kind-head{margin-bottom:1rem}.kind-head .kind-name{margin:0}
+.view-all{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);
+          text-decoration:none;white-space:nowrap}
+@media (max-width:60rem){.shelf.rails .cards{grid-auto-columns:62%}}
+@media (max-width:40rem){
+  /* 휴대폰: 메뉴 다섯 칸을 한 줄로 두고 옆으로 민다. */
+  .top-links{gap:.5rem;flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:.2rem;scrollbar-width:none;
+             justify-content:space-between}
+  .top-links a{flex:none;font-size:.68rem;letter-spacing:.03em}
+  .top-links a.wide-only,.ribbon .wide-only{display:none}
+}
+/* About · 주문 제작 쪽 */
+.about-hero{min-height:0;padding:3.5rem 1.3rem 1.5rem}
+.center{text-align:center}.center .sec-lead{margin-bottom:1.4rem}
+.ways{display:grid;gap:2.4rem 2rem;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))}
+.way{margin:0;background:var(--card);border:1px solid var(--rule);padding:.6rem .6rem 1.4rem}
+.way img{display:block;width:100%;height:auto}
+.way figcaption{padding:1rem .8rem 0}
+.way-no{font-family:var(--display);font-weight:700;color:var(--red);font-size:.95rem}
+.way h3{font-family:var(--display);font-size:1.3rem;margin:.2rem 0 .4rem}
+.way p{margin:0;color:var(--soft);font-size:.96rem;line-height:1.7}
+.fact a{color:var(--red)}
+.steps{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));margin-bottom:2.6rem}
+.step{background:var(--card);border:1px solid var(--rule);padding:1.3rem 1.4rem}
+.step b{font-family:var(--display);font-size:1.8rem;color:var(--red);line-height:1}
+.step h3{font-family:var(--display);font-size:1.15rem;margin:.5rem 0 .3rem}
+.step p{margin:0;color:var(--soft);font-size:.94rem}
+.request{max-width:44rem;margin:0 auto;background:var(--card);border:1px solid var(--rule);
+         padding:clamp(1.3rem,4vw,2.2rem);display:grid;gap:1.1rem}
+.request label{display:grid;gap:.35rem;font-size:.86rem;letter-spacing:.04em;color:var(--soft)}
+.request small{color:var(--faint)}
+.captcha-ask{color:var(--red);font-size:.88rem;margin:0}
+.request input,.request select,.request textarea{font:inherit;font-size:1rem;color:var(--ink);
+  background:var(--paper);border:1px solid var(--rule);padding:.65rem .75rem;border-radius:0;width:100%}
+.request input:focus,.request select:focus,.request textarea:focus{outline:2px solid var(--red);outline-offset:1px}
+.two{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.kind-pick{border:0;padding:0;margin:0;display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.kind-pick legend{font-size:.86rem;color:var(--soft);margin-bottom:.5rem}
+.kind-pick label{display:flex;gap:.6rem;align-items:flex-start;border:1px solid var(--rule);
+  padding:.8rem .9rem;cursor:pointer;background:var(--paper)}
+.kind-pick label:has(input:checked){border-color:var(--red)}
+.kind-pick input{width:auto;margin-top:.3rem;accent-color:var(--red)}
+.kind-pick b{display:block;color:var(--ink);font-size:.98rem;letter-spacing:0}
+.request .btn{border:0;cursor:pointer;justify-self:start}
+.trap{position:absolute;left:-9999px}
+.elsewhere{max-width:44rem;margin:1.6rem auto 0;text-align:center;font-size:.92rem;color:var(--soft)}
+.elsewhere p{margin:0 0 .5rem}.elsewhere a{margin:0 .6rem;color:var(--red)}
+.fine{font-size:.8rem;color:var(--faint);margin:0}.fine a{color:var(--soft)}
+.head-end{display:flex;align-items:center;gap:1rem}
+.arrows{display:flex;gap:.35rem}
+.arrows button{width:2rem;height:2rem;border:1px solid var(--rule);background:var(--card);
+  color:var(--ink);font-size:1.1rem;line-height:1;cursor:pointer;border-radius:50%}
+.arrows button:hover{border-color:var(--red);color:var(--red)}
+.shelf:not(.rails) .arrows{display:none}
+@media (hover:none),(max-width:40rem){.arrows{display:none}}
+</style>
+
 </head>
 <body>
+
+
+<p class="ribbon">Instant download · A4 + US Letter<span class="wide-only"> · Print at home or tap through in GoodNotes</span></p>
+<nav class="top" aria-label="Site">
+  <div class="wrap wide top-in">
+    <a class="logo" href="../../">RuledByPaper</a>
+    <div class="top-links">
+      <a class="top-item" href="../../about/">About us</a>
+      <a class="top-item pill" href="../../#new">New in</a>
+      <div class="menu">
+        <a class="top-item" href="../../#shop">Shop</a>
+        <div class="drop">
+          <a href="../../#all">All products</a>
+          <a href="../../#calendars">Calendars</a>
+          <a href="../../#planners">Everyday Planners</a>
+          <a href="../../#seasonal">Seasonal</a>
+          <a href="../../#paper">Printable Paper</a>
+          <a href="../../#free">Free Paper</a>
+          <a href="../../#bundles">Bundles</a>
+        </div>
+      </div>
+      <a class="top-item" href="../../custom/">Custom orders</a>
+      <a class="top-item" href="../../contact/">Contact</a>
+    </div>
+  </div>
+</nav>
+<script>
+/* 펼친 목록에서 고르면 닫는다 - 눌린 링크에 초점이 남아 계속 열려 있지 않게. */
+document.querySelectorAll(".top .drop a").forEach(function (link) {
+  link.addEventListener("click", function () { link.blur(); });
+});
+</script>
+
 <main class="pd">
   <div class="pd-wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../../">Home</a><span>›</span><a href="../../#all">Shop</a><span>›</span><a href="../../#seasonal">Seasonal</a>
+    </nav>
     <div class="pd-shots">
-      <img class="shot" id="shot" src="../../images/2027-classic/xmas-set/cover-1.png"
-           alt="Christmas Planner Set · Gift List + December Countdown">
+      <div class="stage">
+        <img class="shot" id="shot" src="../../images/2027-classic/xmas-set/cover-1.png"
+             alt="Christmas Planner Set · Gift List + December Countdown">
+        <button type="button" class="stage-prev" aria-label="Previous picture">‹</button>
+        <button type="button" class="stage-next" aria-label="Next picture">›</button>
+      </div>
       <div class="thumbs">
         <button type="button" class="thumb on" data-src="../../images/2027-classic/xmas-set/cover-1.png"
                 aria-label="Show picture 1"><img src="../../images/2027-classic/xmas-set/cover-1.png" alt="" loading="lazy"></button>
@@ -210,29 +449,35 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
                 aria-label="Show picture 2"><img src="../../images/2027-classic/xmas-set/cover-2.png" alt="" loading="lazy"></button>
       </div>
       <script>
-      document.querySelectorAll(".thumb").forEach(function (thumb) {
-        thumb.addEventListener("click", function () {
-          document.getElementById("shot").src = thumb.dataset.src;
-          document.querySelectorAll(".thumb").forEach(function (other) {
-            other.classList.toggle("on", other === thumb);
-          });
-        });
-      });
+      (function () {
+        var thumbs = Array.prototype.slice.call(document.querySelectorAll(".thumb"));
+        var at = 0;
+        function show(i) {
+          at = (i + thumbs.length) % thumbs.length;
+          document.getElementById("shot").src = thumbs[at].dataset.src;
+          thumbs.forEach(function (t, j) { t.classList.toggle("on", j === at); });
+        }
+        thumbs.forEach(function (t, i) { t.addEventListener("click", function () { show(i); }); });
+        document.querySelector(".stage-prev").addEventListener("click", function () { show(at - 1); });
+        document.querySelector(".stage-next").addEventListener("click", function () { show(at + 1); });
+      })();
       </script>
     </div>
     <div class="pd-info">
-      <div class="pd-head">
-        <a class="back" href="../../">RuledByPaper</a>
-        <h1 class="mark">Christmas Planner Set · Gift List + December Countdown</h1>
-        <p class="pitch">Six pages for December. A countdown with a job printed for every day, a gift list, a dinner menu with a cooking timeline, a budget, a card list, and a six-week checklist. No dates, so it works every year.</p>
-      </div>
-      <div class="pd-buy">
-        <span class="price">$3.99</span>
-        <p class="files">2 PDF files · A4 + US Letter · Undated</p>
-        <p><a class="buy" href="https://ruledbypaper.gumroad.com/l/ricyes">Buy now — $3.99
+      <span class="price">$3.99</span>
+      <h1 class="pd-title">Christmas Planner Set · Gift List + December Countdown</h1>
+      <a class="shop-name" href="../../">RuledByPaper</a>
+      <div class="buys">
+        <a class="buy main" href="https://ruledbypaper.gumroad.com/l/ricyes">Buy now — $3.99
           <span class="where">on Gumroad</span></a>
-          <a class="buy" href="https://www.etsy.com/listing/4585419338">Buy now — $3.99
-          <span class="where">on Etsy</span></a></p>
+        <a class="buy" href="https://www.etsy.com/listing/4585419338">Buy now — $3.99
+          <span class="where">on Etsy</span></a>
+      </div>
+      <div class="details">
+        <h2>Item details</h2>
+        <p class="hl">Digital download</p>
+        <p class="hl files">2 PDF files · A4 + US Letter · Undated</p>
+        <p class="pitch">Six pages for December. A countdown with a job printed for every day, a gift list, a dinner menu with a cooking timeline, a budget, a card list, and a six-week checklist. No dates, so it works every year.</p>
       </div>
     </div>
   </div>

@@ -120,39 +120,60 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .buy .where{display:block;font-size:.72rem;letter-spacing:.16em;
             text-transform:uppercase;color:var(--faint);margin-top:.25rem}
 .buy:hover .where,.buy:focus-visible .where{color:inherit}
-/* 상품 쪽 머리. 폰은 제목 -> 그림 -> 값·단추로 쌓고 (pd-info 를 풀어 차례를
-   섞는다), 넓은 화면은 왼쪽 그림 · 오른쪽 제목과 단추 - 단추 칸은 그림을
-   내려 봐도 따라온다 (2026-10-19 사용자: PC 에서 글이 가운데 좁은 띠에 몰린다). */
-.pd{padding:clamp(2.2rem,6vw,3.4rem) 0 clamp(2.5rem,6vw,4rem)}
-.pd-wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem;
-         display:flex;flex-direction:column}
-.pd-info{display:contents}
-.pd-head{order:1;text-align:center;margin-bottom:clamp(1.6rem,4vw,2.4rem)}
-.pd-shots{order:2}
-.pd-buy{order:3}
-.pd .mark{font-size:clamp(1.75rem,5vw,2.7rem);line-height:1.15}
-.pd .pitch{margin-top:1.4rem;font-size:1.05rem}
-.pd-shots .shot{display:block;width:100%;height:auto;margin:0 0 .8rem;
-                border:1px solid var(--rule)}
-.thumbs{display:flex;gap:.6rem;margin:0 0 1.4rem;flex-wrap:wrap}
-.thumb{padding:0;border:1px solid var(--rule);background:none;cursor:pointer;
-       width:5.2rem;opacity:.55;transition:opacity .15s,border-color .15s}
+/* 상품 쪽 - Etsy 짜임 (2026-10-19 사용자). 폰: 길잡이 -> 큰 그림 -> 작은 그림
+   가로줄 -> 값·이름·가게·단추·정보. 넓으면 왼쪽 작은 그림 세로줄 + 큰 그림,
+   오른쪽 정보 칸 - 정보 칸은 그림을 내려 봐도 따라온다. */
+.pd{padding:1.1rem 0 clamp(2.5rem,6vw,4rem)}
+.pd-wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;
+        font-size:.82rem;color:var(--faint);margin:0 0 1.1rem}
+.crumbs a{color:var(--soft);text-underline-offset:.2em}
+.crumbs a:hover{color:var(--red)}
+.pd-shots{display:grid;grid-template-areas:"main" "thumbs";gap:.7rem;margin:0 0 1.6rem}
+.stage{grid-area:main;position:relative}
+.pd-shots .shot{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+.stage-prev,.stage-next{position:absolute;top:50%;transform:translateY(-50%);
+  width:2.6rem;height:2.6rem;border-radius:50%;border:0;padding:0 0 .2rem;
+  background:var(--card);color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer;
+  box-shadow:0 2px 10px rgba(30,28,26,.18)}
+.stage-prev{left:.8rem}.stage-next{right:.8rem}
+.stage-prev:hover,.stage-next:hover{background:var(--ink);color:var(--paper)}
+.thumbs{grid-area:thumbs;display:flex;gap:.6rem;overflow-x:auto;scrollbar-width:none}
+.thumb{flex:none;width:4.6rem;padding:0;border:1px solid var(--rule);background:none;
+       cursor:pointer;opacity:.6;transition:opacity .15s,border-color .15s}
 .thumb img{display:block;width:100%;height:auto}
 .thumb:hover,.thumb:focus-visible{opacity:1}
-.thumb.on{opacity:1;border-color:var(--ink)}
-.pd-buy .price{font-size:1.6rem}
-.pd-buy .files{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-               color:var(--faint);margin:.3rem 0 1rem}
+.thumb.on{opacity:1;border:2px solid var(--ink)}
+.pd-info .price{display:block;font-family:var(--sans);font-weight:700;
+                font-size:1.75rem;line-height:1.2;letter-spacing:-.01em}
+.pd-title{font-family:var(--sans);font-weight:400;font-size:1.12rem;
+          line-height:1.5;margin:.6rem 0 .3rem}
+.shop-name{display:inline-block;font-weight:700;font-size:.95rem;
+           text-decoration:none;margin:0 0 1.4rem}
+.shop-name:hover{color:var(--red)}
+.buys{display:grid;gap:.7rem}
+.pd-info .buy{display:block;text-align:center;border:2px solid var(--ink);
+              border-radius:999px;padding:.75rem 1.4rem;margin:0;font-weight:600}
+.pd-info .buy .where{margin-top:.1rem;font-weight:400}
+.pd-info .buy.main{background:var(--ink);color:var(--paper)}
+.pd-info .buy.main .where{color:inherit;opacity:.75}
+.pd-info .buy.main:hover{background:var(--red);border-color:var(--red)}
+.details{margin-top:2rem;border-top:1px solid var(--rule);padding-top:1.3rem}
+.details h2{font-family:var(--sans);font-size:1rem;font-weight:700;
+            letter-spacing:0;margin:0 0 .7rem}
+.details .hl{position:relative;padding-left:1.3rem;margin:.25rem 0;font-size:.95rem}
+.details .hl::before{content:"";position:absolute;left:.15rem;top:.62em;
+                     width:.45rem;height:.45rem;background:var(--red)}
+.details .pitch{max-width:none;margin:1rem 0 0;font-size:.98rem;line-height:1.7;
+                color:var(--soft);text-wrap:pretty}
 @media (min-width:60rem){
-  .pd-wrap{max-width:68rem;display:grid;gap:3.5rem;align-items:start;
-           grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
-  .pd-shots{order:0}
-  .pd-info{display:block;position:sticky;top:2rem}
-  .pd-head{text-align:left;margin-bottom:1.8rem}
-  .pd .mark{font-size:clamp(1.9rem,2.6vw,2.4rem)}
-  .pd .pitch{max-width:none;margin:1.2rem 0 0;line-height:1.7}
-  .pd-buy{border-top:1px solid var(--rule);padding-top:1.4rem}
-  .pd-buy .buy{display:block;text-align:center;margin:0 0 .7rem}
+  .pd-wrap{max-width:72rem;display:grid;align-items:start;column-gap:3.5rem;
+           grid-template-columns:minmax(0,1fr) 24rem}
+  .crumbs{grid-column:1/-1}
+  .pd-shots{grid-template-areas:"thumbs main";grid-template-columns:4.6rem minmax(0,1fr);
+            align-items:start;gap:1rem;margin:0}
+  .thumbs{flex-direction:column;overflow:visible}
+  .pd-info{position:sticky;top:1.5rem}
 }
 .prose{max-width:34rem}
 .prose h3{font-family:var(--display);font-size:1.15rem;margin:2rem 0 .3rem}
