@@ -181,6 +181,20 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .prose h3{font-family:var(--display);font-size:1.15rem;margin:2rem 0 .3rem}
 .prose ol,.prose ul{padding-left:1.2rem;color:var(--soft)}
 .prose li{margin:.4rem 0}
+/* 쓰는 법 글 (2026-10-19). 제목과 본문을 같은 폭(42rem)에 맞춘다. */
+.guide{padding:1.1rem 0 clamp(2rem,5vw,3rem)}
+.guide .wrap,.guide .guide-body{max-width:42rem}
+.guide-title{font-family:var(--display);font-weight:700;line-height:1.15;
+             font-size:clamp(1.9rem,4.5vw,2.7rem);margin:.4rem 0 .8rem}
+.guide-lead{font-size:1.1rem;line-height:1.7;color:var(--soft);margin:0 0 2rem}
+.guide-body h2{color:var(--red);margin:2.4rem 0 .5rem}
+.guide-body h3{color:var(--brown)}
+.guide-body p,.guide-body li{text-wrap:pretty}
+.guide-body ul,.guide-body ol{color:var(--ink)}
+.guide-list{margin-top:.5rem}
+.guide-list .item h3{font-family:var(--display);font-size:1.2rem}
+.guide-link{margin:1rem 0 0;font-size:.95rem}
+.guide-link a{color:var(--red);font-weight:600}
 /* 상품 설명과 묻고 답하기 (2026-10-19 사용자: PC 에서 줄바꿈이 많고 제목과
    본문이 같은 모양이다). 넓으면 두 단 카드, 폰에서는 한 단으로 접힌다. */
 .about{background:var(--band);border-top:1px solid var(--rule);
@@ -549,6 +563,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
   <div class="wrap">
     <div class="links">
       <a href="../../">All products</a>
+      <a href="../../guides/">Guides</a>
       <a href="../../printing/">Printing guide</a>
       <a href="../../privacy/">Privacy</a>
     </div>
