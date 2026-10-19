@@ -23,6 +23,8 @@
   --red:#B3392E; --grid:rgba(70,90,120,.075); --card:#FFFDF8;
   /* 먹색 띠. --ink 는 다크모드에서 밝아지므로 띠는 따로 둔다. */
   --night:#1E1C1A;
+  /* 상품 설명 소제목 (2026-10-19). */
+  --brown:#7A4B2A;
   color-scheme:light dark;
   --display:"PlayfairR",Georgia,'Times New Roman',serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
@@ -32,7 +34,7 @@
   --paper:#141312; --ink:#ECE7E4; --soft:#A79D99; --faint:#7A716D;
   --rule:#332E2C; --band:#1C1918; --go:#7BB78E;
   --red:#E06A5C; --grid:rgba(255,255,255,.04); --card:#1A1817;
-  --night:#2A2624;}}
+  --night:#2A2624; --brown:#D9A77C;}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
      font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
@@ -132,14 +134,21 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .pd-buy{order:3}
 .pd .mark{font-size:clamp(1.75rem,5vw,2.7rem);line-height:1.15}
 .pd .pitch{margin-top:1.4rem;font-size:1.05rem}
-.pd-shots .shot{display:block;width:100%;height:auto;margin:0 0 1.2rem;
+.pd-shots .shot{display:block;width:100%;height:auto;margin:0 0 .8rem;
                 border:1px solid var(--rule)}
+.thumbs{display:flex;gap:.6rem;margin:0 0 1.4rem;flex-wrap:wrap}
+.thumb{padding:0;border:1px solid var(--rule);background:none;cursor:pointer;
+       width:5.2rem;opacity:.55;transition:opacity .15s,border-color .15s}
+.thumb img{display:block;width:100%;height:auto}
+.thumb:hover,.thumb:focus-visible{opacity:1}
+.thumb.on{opacity:1;border-color:var(--ink)}
 .pd-buy .price{font-size:1.6rem}
 .pd-buy .files{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
                color:var(--faint);margin:.3rem 0 1rem}
 @media (min-width:60rem){
   .pd-wrap{max-width:68rem;display:grid;gap:3.5rem;align-items:start;
            grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+  .pd-shots{order:0}
   .pd-info{display:block;position:sticky;top:2rem}
   .pd-head{text-align:left;margin-bottom:1.8rem}
   .pd .mark{font-size:clamp(1.9rem,2.6vw,2.4rem)}
@@ -156,6 +165,7 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .about{background:var(--band);border-top:1px solid var(--rule);
        padding:clamp(2.4rem,6vw,4rem) 0}
 .about .wrap,.faq .wrap{max-width:68rem}
+.about-head,.faq h2{color:var(--red);font-size:clamp(1.7rem,3vw,2.1rem)}
 .about-head{margin:0 0 1rem}
 /* 소개 문장은 본문 글꼴 보통 굵기로 (2026-10-19 사용자: 전체가 굵어 읽기 힘들다).
    한 줄은 영어 70자 안팎에서 끊고, 줄 끝에 낱말 하나만 남지 않게 한다. */
@@ -163,9 +173,11 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
              color:var(--ink);max-width:38rem;margin:0 0 1rem;text-wrap:pretty}
 .about-grid{display:grid;gap:1.8rem 2.8rem;margin-top:2.2rem;
             grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
-.about-block{border-top:1px solid var(--rule);padding-top:1.1rem}
-.about-title{font-family:var(--display);font-size:1.15rem;line-height:1.3;
-             margin:0;letter-spacing:-.01em}
+/* 소제목 칸은 카드로 - 위 굵은 선과 갈색 제목으로 칸이 한눈에 갈린다. */
+.about-block{background:var(--card);border:1px solid var(--rule);
+             border-top:3px solid var(--brown);padding:1.2rem 1.4rem 1.3rem}
+.about-title{font-family:var(--display);font-size:1.4rem;line-height:1.3;
+             color:var(--brown);margin:0;letter-spacing:-.01em}
 .about-detail{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
               color:var(--faint);margin:.35rem 0 0}
 .about-block p{font-size:.96rem;line-height:1.65;color:var(--soft);margin:.6rem 0 0;
@@ -189,10 +201,24 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 <main class="pd">
   <div class="pd-wrap">
     <div class="pd-shots">
-      <img class="shot" src="../../images/2027-black-red/xmas-set/cover-1.png"
+      <img class="shot" id="shot" src="../../images/2027-black-red/xmas-set/cover-1.png"
            alt="Christmas Planner Set — Red Accent · Gift List + Countdown">
-      <img class="shot" src="../../images/2027-black-red/xmas-set/cover-2.png"
-           alt="Christmas Planner Set — Red Accent · Gift List + Countdown" loading="lazy">
+      <div class="thumbs">
+        <button type="button" class="thumb on" data-src="../../images/2027-black-red/xmas-set/cover-1.png"
+                aria-label="Show picture 1"><img src="../../images/2027-black-red/xmas-set/cover-1.png" alt="" loading="lazy"></button>
+        <button type="button" class="thumb" data-src="../../images/2027-black-red/xmas-set/cover-2.png"
+                aria-label="Show picture 2"><img src="../../images/2027-black-red/xmas-set/cover-2.png" alt="" loading="lazy"></button>
+      </div>
+      <script>
+      document.querySelectorAll(".thumb").forEach(function (thumb) {
+        thumb.addEventListener("click", function () {
+          document.getElementById("shot").src = thumb.dataset.src;
+          document.querySelectorAll(".thumb").forEach(function (other) {
+            other.classList.toggle("on", other === thumb);
+          });
+        });
+      });
+      </script>
     </div>
     <div class="pd-info">
       <div class="pd-head">
