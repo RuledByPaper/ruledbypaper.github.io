@@ -134,9 +134,10 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .about .wrap,.faq .wrap{max-width:60rem}
 .about-kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
               color:var(--red);margin:0 0 .9rem}
-.about-intro{font-family:var(--display);font-weight:700;
-             font-size:clamp(1.15rem,2.2vw,1.35rem);line-height:1.5;
-             max-width:44rem;margin:0 0 1rem}
+/* 소개 문장은 본문 글꼴 보통 굵기로 (2026-10-19 사용자: 전체가 굵어 읽기 힘들다).
+   한 줄은 영어 70자 안팎에서 끊고, 줄 끝에 낱말 하나만 남지 않게 한다. */
+.about-intro{font-size:clamp(1.05rem,1.6vw,1.15rem);line-height:1.75;
+             color:var(--ink);max-width:38rem;margin:0 0 1rem;text-wrap:pretty}
 .about-grid{display:grid;gap:1.8rem 2.8rem;margin-top:2.2rem;
             grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
 .about-block{border-top:1px solid var(--rule);padding-top:1.1rem}
@@ -144,10 +145,11 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
              margin:0;letter-spacing:-.01em}
 .about-detail{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
               color:var(--faint);margin:.35rem 0 0}
-.about-block p{font-size:.96rem;line-height:1.65;color:var(--soft);margin:.6rem 0 0}
+.about-block p{font-size:.96rem;line-height:1.65;color:var(--soft);margin:.6rem 0 0;
+               text-wrap:pretty}
 .about-block ul{list-style:none;padding:0;margin:.7rem 0 0}
 .about-block li{position:relative;padding-left:1.1rem;margin:.38rem 0;
-                font-size:.95rem;line-height:1.6;color:var(--soft)}
+                font-size:.95rem;line-height:1.6;color:var(--soft);text-wrap:pretty}
 .about-block li::before{content:"";position:absolute;left:0;top:.8em;
                         width:.5rem;height:1px;background:var(--red)}
 .about-note{font-size:.85rem;line-height:1.6;color:var(--faint);
