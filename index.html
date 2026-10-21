@@ -148,7 +148,9 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
       padding:1rem;background:rgba(20,18,16,.88);cursor:zoom-out}
 .zoom[hidden]{display:none}
 .zoom img{max-width:100%;max-height:100%;width:auto;height:auto;background:#fff;
-          box-shadow:0 6px 30px rgba(0,0,0,.4)}
+          box-shadow:0 6px 30px rgba(0,0,0,.4);cursor:zoom-in;transition:transform .2s}
+.zoom.in{overflow:hidden}
+.zoom.in img{transform:scale(2.5);cursor:zoom-out;touch-action:none}
 .thumbs{grid-area:thumbs;display:flex;gap:.6rem;overflow-x:auto;scrollbar-width:none}
 .thumb{flex:none;width:4.6rem;padding:0;border:1px solid var(--rule);background:none;
        cursor:pointer;opacity:.6;transition:opacity .15s,border-color .15s}
@@ -459,13 +461,13 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
 
 <header class="hero">
   <div class="collage" aria-hidden="true">
-    <img class="c1" src="./images/2027-christmas-village/journal-pockets/card.png" alt=""
+    <img class="c1" src="./images/2027-autumn-harvest/fussy-cuts/card.png" alt=""
          width="600" height="600">
-    <img class="c2" src="./images/2027-renaissance-fairy/fussy-cuts/card.png" alt=""
+    <img class="c2" src="./images/2027-christmas-village/journal-pockets/card.png" alt=""
          width="600" height="600">
-    <img class="c3" src="./images/2027-retro-christmas/paper-dolls/card.png" alt=""
+    <img class="c3" src="./images/2027-renaissance-fairy/fussy-cuts/card.png" alt=""
          width="600" height="600">
-    <img class="c4" src="./images/2027-vintage-christmas/fussy-cuts/card.png" alt=""
+    <img class="c4" src="./images/2027-retro-christmas/paper-dolls/card.png" alt=""
          width="600" height="600">
   </div>
   <div class="hero-copy">
@@ -494,6 +496,12 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
   <div class="wrap wide">
     <div class="row-head"><h2>New in</h2><span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#all">View all →</a></span></div>
     <div class="rail">
+      <a class="tile" href="./p/autumn-harvest-fussy-cuts/">
+        <img src="./images/2027-autumn-harvest/fussy-cuts/card.png" alt="Autumn Harvest Fussy Cuts · Printable Junk Journal Ephemera"
+             width="600" height="600" loading="lazy">
+        <h3>Autumn Harvest Fussy Cuts · Printable Junk Journal Ephemera</h3>
+        <span class="price">$2.99</span>
+      </a>
       <a class="tile" href="./p/christmas-village-journal-pockets/">
         <img src="./images/2027-christmas-village/journal-pockets/card.png" alt="Christmas Junk Journal Pockets Printable · Village Shop Fronts"
              width="600" height="600" loading="lazy">
@@ -535,12 +543,6 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
              width="600" height="600" loading="lazy">
         <h3>Family Recipe Binder — Red Accent · Printable Recipe Pages + 4x6 Cards</h3>
         <span class="price">$3.99</span>
-      </a>
-      <a class="tile" href="./p/halloween-fussy-cuts/">
-        <img src="./images/2027-halloween/fussy-cuts/card.png" alt="Vintage Halloween Fussy Cuts · Printable Junk Journal Ephemera"
-             width="600" height="600" loading="lazy">
-        <h3>Vintage Halloween Fussy Cuts · Printable Junk Journal Ephemera</h3>
-        <span class="price">$2.99</span>
       </a>
     </div>
   </div>
@@ -877,12 +879,13 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
     </div>
     <div class="kind" id="seasonal">
     <div class="row-head kind-head">
-      <h3 class="kind-name">Seasonal <span>9</span></h3>
+      <h3 class="kind-name">Seasonal <span>10</span></h3>
       <span class="head-end"><span class="arrows"><button type="button" data-dir="-1" aria-label="Scroll back">‹</button><button type="button" data-dir="1" aria-label="Scroll on">›</button></span><a class="view-all" href="#seasonal">View all →</a></span>
     </div>
     <nav class="seasons" aria-label="Seasons">
       <a href="#seasonal">All seasons</a>
       <a href="#s-halloween">Halloween</a>
+      <a href="#s-autumn">Autumn</a>
       <a href="#s-christmas">Christmas</a>
       <a href="#s-winter">Winter</a>
     </nav>
@@ -892,6 +895,15 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
              alt="Vintage Halloween Fussy Cuts · Printable Junk Journal Ephemera" width="600" height="600" loading="lazy">
         <div class="item-top">
           <h3>Vintage Halloween Fussy Cuts · Printable Junk Journal Ephemera</h3>
+          <span class="price">$2.99</span>
+        </div>
+        <p class="files">2 PDF files · A4 + US Letter · 3 sheets</p>
+      </a>
+      <a class="item" href="./p/autumn-harvest-fussy-cuts/" data-season="autumn">
+        <img class="shot" src="./images/2027-autumn-harvest/fussy-cuts/card.png"
+             alt="Autumn Harvest Fussy Cuts · Printable Junk Journal Ephemera" width="600" height="600" loading="lazy">
+        <div class="item-top">
+          <h3>Autumn Harvest Fussy Cuts · Printable Junk Journal Ephemera</h3>
           <span class="price">$2.99</span>
         </div>
         <p class="files">2 PDF files · A4 + US Letter · 3 sheets</p>
