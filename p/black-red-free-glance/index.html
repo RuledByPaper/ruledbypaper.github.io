@@ -145,7 +145,9 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
       padding:1rem;background:rgba(20,18,16,.88);cursor:zoom-out}
 .zoom[hidden]{display:none}
 .zoom img{max-width:100%;max-height:100%;width:auto;height:auto;background:#fff;
-          box-shadow:0 6px 30px rgba(0,0,0,.4)}
+          box-shadow:0 6px 30px rgba(0,0,0,.4);cursor:zoom-in;transition:transform .2s}
+.zoom.in{overflow:hidden}
+.zoom.in img{transform:scale(2.5);cursor:zoom-out;touch-action:none}
 .thumbs{grid-area:thumbs;display:flex;gap:.6rem;overflow-x:auto;scrollbar-width:none}
 .thumb{flex:none;width:4.6rem;padding:0;border:1px solid var(--rule);background:none;
        cursor:pointer;opacity:.6;transition:opacity .15s,border-color .15s}
@@ -468,11 +470,31 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
       (function () {
         var zoom = document.getElementById("zoom"), big = zoom.querySelector("img");
         var shot = document.getElementById("shot");
-        function close() { zoom.hidden = true; document.body.style.overflow = ""; }
+        function aim(e) {
+          /* offset* 은 커지기 전 자리라 확대 중에도 흔들리지 않는다. */
+          var p = e.touches ? e.touches[0] : e;
+          var x = (p.clientX - big.offsetLeft) / big.offsetWidth;
+          var y = (p.clientY - big.offsetTop) / big.offsetHeight;
+          x = Math.min(Math.max(x, 0), 1); y = Math.min(Math.max(y, 0), 1);
+          big.style.transformOrigin = x * 100 + "% " + y * 100 + "%";
+        }
+        function close() {
+          zoom.hidden = true; zoom.classList.remove("in");
+          document.body.style.overflow = "";
+        }
         shot.addEventListener("click", function () {
-          big.src = shot.src; big.alt = shot.alt;
+          big.src = shot.src; big.alt = shot.alt; big.style.transformOrigin = "";
           zoom.hidden = false; document.body.style.overflow = "hidden";
         });
+        big.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (!zoom.classList.contains("in")) aim(e);
+          zoom.classList.toggle("in");
+        });
+        big.addEventListener("mousemove", function (e) { if (zoom.classList.contains("in")) aim(e); });
+        big.addEventListener("touchmove", function (e) {
+          if (zoom.classList.contains("in")) { e.preventDefault(); aim(e); }
+        }, {passive: false});
         zoom.addEventListener("click", close);
         document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
       })();
