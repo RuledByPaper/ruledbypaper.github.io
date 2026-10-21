@@ -140,6 +140,12 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
   box-shadow:0 2px 10px rgba(30,28,26,.18)}
 .stage-prev{left:.8rem}.stage-next{right:.8rem}
 .stage-prev:hover,.stage-next:hover{background:var(--ink);color:var(--paper)}
+.pd-shots .shot{cursor:zoom-in}
+.zoom{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+      padding:1rem;background:rgba(20,18,16,.88);cursor:zoom-out}
+.zoom[hidden]{display:none}
+.zoom img{max-width:100%;max-height:100%;width:auto;height:auto;background:#fff;
+          box-shadow:0 6px 30px rgba(0,0,0,.4)}
 .thumbs{grid-area:thumbs;display:flex;gap:.6rem;overflow-x:auto;scrollbar-width:none}
 .thumb{flex:none;width:4.6rem;padding:0;border:1px solid var(--rule);background:none;
        cursor:pointer;opacity:.6;transition:opacity .15s,border-color .15s}
@@ -513,6 +519,15 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
   <div class="wrap shelf">
     <h2>Ready to print</h2>
     <div class="cards">
+      <a class="item" href="../../p/bakery-desk-calendar/">
+        <img class="shot" src="../../images/2027-bakery/desk-calendar/card.png"
+             alt="2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
+        <div class="item-top">
+          <h3>2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards</h3>
+          <span class="price">$2.49</span>
+        </div>
+        <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
+      </a>
       <a class="item" href="../../p/bloom-glass-desk-calendar/">
         <img class="shot" src="../../images/2027-bloom-glass/desk-calendar/card.png"
              alt="2027 Birth Flower Desk Calendar — Watercolor | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
@@ -546,15 +561,6 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
         <div class="item-top">
           <h3>2027 Cat Desk Calendar — Cozy Watercolor Cats | Printable Cut-Out Cards</h3>
           <span class="price">$2.99</span>
-        </div>
-        <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
-      </a>
-      <a class="item" href="../../p/bakery-desk-calendar/">
-        <img class="shot" src="../../images/2027-bakery/desk-calendar/card.png"
-             alt="2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards" width="600" height="600" loading="lazy">
-        <div class="item-top">
-          <h3>2027 Baking Desk Calendar — Cozy Watercolor Bakes | Printable Cut-Out Cards</h3>
-          <span class="price">$2.49</span>
         </div>
         <p class="files">4 PDF files · A4 + US Letter · Monday or Sunday start</p>
       </a>
