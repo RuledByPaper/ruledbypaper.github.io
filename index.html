@@ -156,6 +156,8 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
 .thumb.on{opacity:1;border:2px solid var(--ink)}
 .pd-info .price{display:block;font-family:var(--sans);font-weight:700;
                 font-size:1.75rem;line-height:1.2;letter-spacing:-.01em}
+.tax-note{display:block;font-size:.78rem;color:var(--faint);margin:.15rem 0 0}
+.sec-lead+.tax-note{margin:-1.6rem 0 2rem}
 .pd-title{font-family:var(--sans);font-weight:400;font-size:1.12rem;
           line-height:1.5;margin:.6rem 0 .3rem}
 .shop-name{display:inline-block;font-weight:700;font-size:.95rem;
@@ -557,6 +559,7 @@ document.querySelectorAll(".top .drop a").forEach(function (link) {
     <h2>The whole shop</h2>
     <p class="sec-lead">Instant download. Print at home, or drop the files into
       GoodNotes on an iPad.</p>
+    <p class="tax-note">Prices in USD. Plus tax where applicable.</p>
     <nav class="kinds" aria-label="Product types">
       <a href="#all" aria-current="true">All</a>
       <a href="#calendars">Calendars</a>
