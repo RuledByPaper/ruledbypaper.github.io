@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://ruledbypaper.com/free/millimeter-graph-paper/millimeter-graph-paper.png">
 <link rel="canonical" href="https://ruledbypaper.com/free/millimeter-graph-paper/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "brand": {"@type": "Brand", "name": "RuledByPaper"}, "description": "True 1 mm squares, darker every 5 mm and every centimetre.", "image": ["https://ruledbypaper.com/free/millimeter-graph-paper/millimeter-graph-paper.png"], "name": "Free Printable Millimeter Graph Paper", "offers": [{"@type": "Offer", "availability": "https://schema.org/InStock", "price": "0.00", "priceCurrency": "USD", "url": "https://ruledbypaper.gumroad.com/l/nhuajx"}], "url": "https://ruledbypaper.com/free/millimeter-graph-paper/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "brand": {"@type": "Brand", "name": "RuledByPaper"}, "description": "True 1 mm squares, darker every 5 mm and every centimetre.", "image": ["https://ruledbypaper.com/free/millimeter-graph-paper/millimeter-graph-paper.png"], "name": "Free Printable Millimeter Graph Paper", "offers": [{"@type": "Offer", "availability": "https://schema.org/InStock", "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": ["US", "GB", "CA", "AU", "DE"], "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"}, "price": "0.00", "priceCurrency": "USD", "shippingDetails": {"@type": "OfferShippingDetails", "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "maxValue": 0, "minValue": 0, "unitCode": "DAY"}, "transitTime": {"@type": "QuantitativeValue", "maxValue": 0, "minValue": 0, "unitCode": "DAY"}}, "shippingDestination": [{"@type": "DefinedRegion", "addressCountry": "US"}, {"@type": "DefinedRegion", "addressCountry": "GB"}, {"@type": "DefinedRegion", "addressCountry": "CA"}, {"@type": "DefinedRegion", "addressCountry": "AU"}, {"@type": "DefinedRegion", "addressCountry": "DE"}], "shippingRate": {"@type": "MonetaryAmount", "currency": "USD", "value": "0.00"}}, "url": "https://ruledbypaper.gumroad.com/l/nhuajx"}], "url": "https://ruledbypaper.com/free/millimeter-graph-paper/"}</script>
 
 <link rel="icon" href="../../favicon.png">
 <meta name="color-scheme" content="light dark">
@@ -70,6 +70,7 @@ h2{font-family:var(--display);font-weight:700;font-size:1.6rem;
 .kinds a:hover,.kinds a:focus-visible{border-color:var(--ink);color:var(--ink)}
 .kinds a[aria-current]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .kind{margin-bottom:2.6rem;scroll-margin-top:4rem}
+.item[hidden]{display:none}
 .kind:last-child{margin-bottom:0}
 .kind-name{font-family:var(--display);font-size:1.25rem;margin:0 0 1rem}
 .kind-name span{font-family:var(--sans);font-size:.8rem;font-weight:400;
@@ -145,7 +146,9 @@ header.sub .pitch{margin-top:1.4rem;font-size:1.05rem}
       padding:1rem;background:rgba(20,18,16,.88);cursor:zoom-out}
 .zoom[hidden]{display:none}
 .zoom img{max-width:100%;max-height:100%;width:auto;height:auto;background:#fff;
-          box-shadow:0 6px 30px rgba(0,0,0,.4)}
+          box-shadow:0 6px 30px rgba(0,0,0,.4);cursor:zoom-in;transition:transform .2s}
+.zoom.in{overflow:hidden}
+.zoom.in img{transform:scale(2.5);cursor:zoom-out;touch-action:none}
 .thumbs{grid-area:thumbs;display:flex;gap:.6rem;overflow-x:auto;scrollbar-width:none}
 .thumb{flex:none;width:4.6rem;padding:0;border:1px solid var(--rule);background:none;
        cursor:pointer;opacity:.6;transition:opacity .15s,border-color .15s}
