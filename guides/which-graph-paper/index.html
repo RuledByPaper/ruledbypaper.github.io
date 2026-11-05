@@ -261,6 +261,8 @@ body.home{background-color:var(--paper);
         gap:1rem;padding-top:1rem;padding-bottom:1rem;flex-wrap:wrap}
 .logo{font-family:var(--display);font-weight:700;font-size:1.6rem;
       text-decoration:none;letter-spacing:-.01em}
+.brand{display:flex;flex-direction:column;line-height:1.15}
+.logo-sub{font-family:var(--display);font-size:.78rem;color:var(--soft);letter-spacing:.02em}
 .top-links{display:flex;gap:2rem;flex-wrap:wrap}
 .top-links a{font-size:.88rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
              text-decoration:none;color:var(--ink)}
@@ -429,10 +431,13 @@ body.home{background-color:var(--paper);
 <body>
 
 
-<p class="ribbon">Instant download · Print or use on iPad<span class="wide-only"> · A4 + US Letter sheets · GoodNotes stickers</span></p>
+<p class="ribbon">Instant download · Print or use on a tablet<span class="wide-only"> · A4 + US Letter sheets · GoodNotes stickers</span></p>
 <nav class="top" aria-label="Site">
   <div class="wrap wide top-in">
-    <a class="logo" href="../../">RuledByPaper</a>
+    <div class="brand">
+      <a class="logo" href="../../">RuledByPaper</a>
+      <span class="logo-sub">For people ruled by paper</span>
+    </div>
     <div class="top-links">
       <a class="top-item" href="../../about/">About us</a>
       <a class="top-item pill" href="../../#new">New in</a>
