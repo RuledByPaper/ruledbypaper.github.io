@@ -260,8 +260,10 @@ body.home{background-color:var(--paper);
         gap:1rem;padding-top:1rem;padding-bottom:1rem;flex-wrap:wrap}
 .logo{font-family:var(--display);font-weight:700;font-size:1.6rem;
       text-decoration:none;letter-spacing:-.01em}
+/* 부제는 이름과 양 끝을 맞춘다 (사용자 2026-11-05) - 글자 간격으로 거의 채우고 남는 틈은 낱말 사이로 */
 .brand{display:flex;flex-direction:column;line-height:1.15}
-.logo-sub{font-family:var(--display);font-size:.78rem;color:var(--soft);letter-spacing:.02em}
+.logo-sub{font-family:var(--display);font-size:.76rem;color:var(--soft);letter-spacing:.045em;
+          white-space:nowrap;text-align:justify;text-align-last:justify}
 .top-links{display:flex;gap:2rem;flex-wrap:wrap}
 .top-links a{font-size:.88rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
              text-decoration:none;color:var(--ink)}
